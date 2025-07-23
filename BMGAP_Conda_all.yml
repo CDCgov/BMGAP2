@@ -1,0 +1,20 @@
+name: BMGAP2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - cutadapt
+  - pandas
+  - pigz
+  - mash
+  - matplotlib
+  - blast
+  - openpyxl
+  - biopython==1.78
+  - spades
+  - requests
+  - python==3.7.3
+  - urllib3==1.24.2
+  - bbmap
+  - executor
+  - bowtie2
