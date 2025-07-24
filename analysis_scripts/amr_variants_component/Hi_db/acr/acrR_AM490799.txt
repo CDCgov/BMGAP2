@@ -1,0 +1,11 @@
+H. influenzae acrR gene gen bank AM490799 isolate 187
+
+atgcgacaag ctaaaacaga cttagctgaa cagatttttt cagcgacaga tcgtttaatg gcaagagaag 
+ggttgaatca actttctatg cacaaacttg cgaaagaagc aaatgtggcc gcaggaacga tttaccttta 
+ttttaaaaac aaagatgagt tgctcgaaca atttgcacac agagtgtttt caatgtttat ggcaacactt 
+gaaaaagatt ttgatgaaac taaacctttt ttcgaacagt atcgacaaat gtggaaaaat atttggtatt 
+tcttacaaga aaatcccacc attctatcca atttaaagca atatgaatct ttgcctaatt tcaaggatat 
+ttgtaaaaac gttaaaaatt gtcgttggga tttattttgt gaccaagcca aaaaagctgg cttattagcg 
+gaattatctg aagatattct ctttttatta agtttgaaaa cggcgataaa tttagcctct gatgcaaaat 
+ttatcgattt cgatcttaag cctgaaattt tagaatctgt gattgaacgc tcttggcgtg cgattcagaa 
+ataa

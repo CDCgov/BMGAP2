@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:13:46 2020 ####
+../runAST.py -i pmga/json/mefA/ -s Nm -o AMR/mefA/
+
+runAST_v1.0
+Options are:
+input_dir pmga/json/mefA/
+out_dir AMR/mefA/
+save_intermediate False
+species Nm
+
+PMGA jason file: mefA_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/mefA/mefA_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'mefA'}
+did not find
+{'ermA', 'rpoB', 'NEIS1525', 'ermC', 'NEIS2210', 'blaROB-1', 'ermF', 'NEIS0123', 'cat', 'gyrA', 'NEIS0414', 'tetB', 'ermB', 'tetK', 'NEIS1320', 'penA', 'NEIS2357', 'NEIS1753'}

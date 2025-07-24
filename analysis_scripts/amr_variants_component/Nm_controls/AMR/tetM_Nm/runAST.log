@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:14:35 2020 ####
+../runAST.py -i pmga/json/tetM_Nm/ -s Nm -o AMR/tetM_Nm/
+
+runAST_v1.0
+Options are:
+input_dir pmga/json/tetM_Nm/
+out_dir AMR/tetM_Nm/
+save_intermediate False
+species Nm
+
+PMGA jason file: tetM_Nm_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/tetM_Nm/tetM_Nm_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'NEIS2210'}
+did not find
+{'cat', 'NEIS1525', 'tetB', 'NEIS0414', 'ermF', 'ermA', 'mefA', 'gyrA', 'ermC', 'tetK', 'blaROB-1', 'NEIS1753', 'NEIS1320', 'penA', 'rpoB', 'ermB', 'NEIS0123', 'NEIS2357'}

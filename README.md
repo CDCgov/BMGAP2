@@ -2,8 +2,8 @@
 
 This repository holds the code to run the pipeline for Bacterial Meningitis Genomic Analysis Platform (BMGAP) on the command line.  
 
-This pipeline is used for processing raw reads from a sequencing run and currently only supports Illumina platforms.  This pipeline was tested on Sun Grid Engine (SGE)\
-and automatically submits jobs to your cluster.  To pass variables in from the Conda environment, ensure the use of -V when submitting jobs.
+This pipeline is used for processing raw reads from a sequencing run and currently only supports Illumina platforms.  This pipeline was tested on Sun Grid Engine (SGE) and automatically submits jobs to your cluster.  To pass variables in from the Conda environment, ensure the use of -V when submitting jobs.
+
 ### Installation
 Creating the environment from *yml file:
 ```
@@ -16,7 +16,17 @@ aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo
 
 Build the PubMLST database in the [PMGA folder](./analysis_scripts/PMGA) within the analysis_scripts directory (**NOTE: The database should be updated regularly based on usage frequency to ensure the most current PubMLST data):
 ```
-python analysis_scripts/PMGA/build_pubmlst_dbs.py -o analysis_scripts/PMGA/pubmlst_dbs_all
+python build_pubmlst_dbs.py -o pubmlst_dbs_all
+```
+
+Build the RefSeq Mash sketch for BMScan and PMGA:
+```
+wget -qO- http://gembox.cbcb.umd.edu/mash/RefSeqSketchesDefaults.msh.gz | gunzip | tee analysis_scripts/SpeciesDB/lib/RefSeqSketchesDefaults.msh > analysis_scripts/PMGA/lib/RefSeqSketchesDefaults.msh
+```
+
+Unzip the MLST file in the locusextractor folder:
+```
+gunzip analysis_scripts/locusextractor/settings_antibiotics/lookupTables/Isolate2MLST2Species.txt.gz
 ```
 
 ### Usage
@@ -27,7 +37,6 @@ arguments:
 	FASTQ_DIR		Input Directory: Directory of paired-end FASTQ files to analyze
 	ANALYSIS_DIRECTORY	Output Directory: Directory where results should be placed in 
 ```
-
 
 ```mermaid
 ---
@@ -81,6 +90,4 @@ CDC database can be accessible by using SAMS account.  If you would like access 
 *User can only access their own data , depending on the permission
 
 ### Testing the pipeline
-To verify the proper installation of the pipeline, database and dependencies, test files and expected results are located in the [test folder](./test).
-Run the test isolate and compare its results with the expected results to ensure they match.
-
+To verify the proper installation of the pipeline, database and dependencies, from NCBI, download [SRR8034137](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR8034137&display=metadata).  Once downloaded, change the name convention from SRR8034137_1.fastq.gz and SRR8034137_2.fastq.gz to SRR8034137_R1.fastq.gz and SRR8034137_R2.fastq.gz.  Run the test isolate and compare to the expected results found in the [test folder](./test).

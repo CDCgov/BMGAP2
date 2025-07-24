@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:14:05 2020 ####
+../runAST.py -i pmga/json/NEIS0414_13/ -s Nm -o AMR/NEIS0414_13/
+
+runAST_v1.0
+Options are:
+save_intermediate False
+species Nm
+input_dir pmga/json/NEIS0414_13/
+out_dir AMR/NEIS0414_13/
+
+PMGA jason file: NEIS0414_13_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/NEIS0414_13/NEIS0414_13_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'NEIS0414'}
+did not find
+{'NEIS1320', 'penA', 'tetB', 'mefA', 'ermF', 'rpoB', 'NEIS1753', 'NEIS2210', 'ermB', 'blaROB-1', 'NEIS0123', 'cat', 'ermA', 'NEIS2357', 'tetK', 'NEIS1525', 'gyrA', 'ermC'}

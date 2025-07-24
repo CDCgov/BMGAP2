@@ -1,0 +1,76 @@
+LOCUS       NC_019180                861 bp    DNA     linear   CON 17-DEC-2014
+DEFINITION  Haemophilus influenzae plasmid pA1606, complete sequence.
+ACCESSION   NC_019180 REGION: complement(1540..2400)
+VERSION     NC_019180.1
+DBLINK      BioProject: PRJNA178797
+KEYWORDS    RefSeq.
+SOURCE      Haemophilus influenzae
+  ORGANISM  Haemophilus influenzae
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales;
+            Pasteurellaceae; Haemophilus.
+REFERENCE   1  (bases 1 to 861)
+  AUTHORS   Sondergaard,A., San Millan,A., Santos-Lopez,A., Nielsen,S.M.,
+            Gonzalez-Zorn,B. and Norskov-Lauritsen,N.
+  TITLE     Molecular Organization of Small Plasmids Bearing blaTEM-1 and
+            Conferring Resistance to beta-Lactams in Haemophilus influenzae
+  JOURNAL   Antimicrob. Agents Chemother. 56 (9), 4958-4960 (2012)
+   PUBMED   22733069
+REFERENCE   2  (bases 1 to 861)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-NOV-2012) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 861)
+  AUTHORS   Sondergaard,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-FEB-2012) Department of Clinical Microbiology, Aarhus
+            University Hospital, Brendstrupgaardsvej 100, Aarhus N 8200,
+            Denmark
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to JQ611726.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..861
+                     /organism="Haemophilus influenzae"
+                     /mol_type="genomic DNA"
+                     /strain="A1606"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:727"
+                     /plasmid="pA1606"
+                     /country="Denmark"
+     gene            1..861
+                     /gene="blaTEM-1"
+                     /locus_tag="D652_p6004"
+                     /db_xref="GeneID:13915083"
+     CDS             1..861
+                     /gene="blaTEM-1"
+                     /locus_tag="D652_p6004"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="beta-lactamase TEM-1"
+                     /protein_id="YP_006959642.1"
+                     /db_xref="GeneID:13915083"
+                     /translation="MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGY
+                     IELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRVDAGQEQLGRRIHYSQNDLVE
+                     YSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRL
+                     DRWEPELNEAIPNDERDTTMPAAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPL
+                     LRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIA
+                     EIGASLIKHW"
+ORIGIN      
+        1 atgagtattc aacattttcg tgtcgccctt attccctttt ttgcggcatt ttgccttcct
+       61 gtttttgctc acccagaaac gctggtgaaa gtaaaagatg ctgaagatca gttgggtgca
+      121 cgagtgggtt acatcgaact ggatctcaac agcggtaaga tccttgagag ttttcgcccc
+      181 gaagaacgtt ttccaatgat gagcactttt aaagttctgc tatgtggtgc ggtattatcc
+      241 cgtgttgacg ccgggcaaga gcaactcggt cgccgcatac actattctca gaatgacttg
+      301 gttgagtact caccagtcac agaaaagcat cttacggatg gcatgacagt aagagaatta
+      361 tgcagtgctg ccataaccat gagtgataac actgctgcca acttacttct gacaacgatc
+      421 ggaggaccga aggagctaac cgcttttttg cacaacatgg gggatcatgt aactcgcctt
+      481 gatcgttggg aaccggagct gaatgaagcc ataccaaacg acgagcgtga caccacgatg
+      541 cctgcagcaa tggcaacaac gttgcgcaaa ctattaactg gcgaactact tactctagct
+      601 tcccggcaac aattaataga ctggatggag gcggataaag ttgcaggacc acttctgcgc
+      661 tcggcccttc cggctggctg gtttattgct gataaatctg gagccggtga gcgtgggtct
+      721 cgcggtatca ttgcagcact ggggccagat ggtaagccct cccgtatcgt agttatctac
+      781 acgacgggga gtcaggcaac tatggatgaa cgaaatagac agatcgctga gataggtgcc
+      841 tcactgatta agcattggta a
+//
+

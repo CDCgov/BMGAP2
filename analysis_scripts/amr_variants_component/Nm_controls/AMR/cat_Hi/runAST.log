@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:13:37 2020 ####
+../runAST.py -i pmga/json/cat_Hi/ -s Nm -o AMR/cat_Hi/
+
+runAST_v1.0
+Options are:
+out_dir AMR/cat_Hi/
+species Nm
+input_dir pmga/json/cat_Hi/
+save_intermediate False
+
+PMGA jason file: cat_Hi_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/cat_Hi/cat_Hi_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'cat'}
+did not find
+{'ermA', 'NEIS2210', 'mefA', 'penA', 'tetK', 'NEIS1525', 'gyrA', 'ermF', 'NEIS0414', 'NEIS1320', 'tetB', 'blaROB-1', 'NEIS2357', 'ermC', 'NEIS1753', 'ermB', 'NEIS0123', 'rpoB'}

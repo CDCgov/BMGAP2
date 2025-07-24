@@ -1,0 +1,1 @@
+{"SRR8034137_cleaned.fasta": {"mash_results": {"species": "Neisseria meningitidis", "top_hit": "M08865_HUY3758A22_cleaned.fasta", "mash_pval": "0", "mash_hash": "954/1000", "score": 0.99886557, "source": "BML_collection", "notes": "Hit above threshold"}}}

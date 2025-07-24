@@ -1,0 +1,76 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: hi_alleles_dna.fasta
+           1,864 sequences; 1,744,661 total letters
+
+
+
+Query= NC_000907.1:841770-842102 Haemophilus influenzae Rd KW20 chromosome,
+complete genome
+
+Length=333
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  HAEM0906_1                                                          610     9e-176
+
+
+> HAEM0906_1
+Length=333
+
+ Score = 610 bits (330),  Expect = 9e-176
+ Identities = 332/333 (99%), Gaps = 0/333 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGAAACTATCGCAAAACATCGTTACGCTCGCACTTCTGCCCAAAAAGCTCGCTTAGTT  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    ATGGAAACTATCGCAAAACATCGTTACGCTCGCACTTCTGCCCAAAAAGCTCGCTTAGTT  60
+
+Query  61   GCCGATTTAATTCGTGGTAAAAAAGTTGCGCAAGCATTAGAAATTTTAACTTTCACTAAC  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  61   GCCGATTTAATTCGTGGTAAAAAAGTTGCGCAAGCATTAGAAATTTTAACTTTCACTAAC  120
+
+Query  121  AAAAAAGCAGCAGCTTTAGTGAAGAAAGTTTTAGAATCAGCTATTGCAAATGCAGAGCAC  180
+            |||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||
+Sbjct  121  AAAAAAGCAGCAGCTTTAGTGAAGAAAGTTTTAGAATCAGCTATTGCAAACGCAGAGCAC  180
+
+Query  181  AATGACGGTGCAGATATTGATGATCTTAAAGTTGCTAAAATCTTCGTTGATGAAGGTCCT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  AATGACGGTGCAGATATTGATGATCTTAAAGTTGCTAAAATCTTCGTTGATGAAGGTCCT  240
+
+Query  241  AGCATGAAACGTGTTATGCCACGTGCTAAAGGTCGTGCAGATCGTATTTTAAAACGTACT  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  AGCATGAAACGTGTTATGCCACGTGCTAAAGGTCGTGCAGATCGTATTTTAAAACGTACT  300
+
+Query  301  AGCCACATTACTGTGGTTGTGTCAGATCGTTAA  333
+            |||||||||||||||||||||||||||||||||
+Sbjct  301  AGCCACATTACTGTGGTTGTGTCAGATCGTTAA  333
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 534410253
+
+
+  Database: hi_alleles_dna.fasta
+    Posted date:  May 3, 2018  1:32 PM
+  Number of letters in database: 1,744,661
+  Number of sequences in database:  1,864
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

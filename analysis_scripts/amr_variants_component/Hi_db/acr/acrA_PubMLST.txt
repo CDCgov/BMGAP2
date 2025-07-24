@@ -1,0 +1,132 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: hi_alleles_dna.fasta
+           1,864 sequences; 1,744,661 total letters
+
+
+
+Query= ENA|ADO81422|ADO81422.1 Haemophilus influenzae R2866 Multidrug
+efflux system protein AcrA
+
+Length=1149
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  HAEM1019_1                                                          1962    0.0  
+
+
+> HAEM1019_1
+Length=1149
+
+ Score = 1962 bits (1062),  Expect = 0.0
+ Identities = 1120/1149 (97%), Gaps = 0/1149 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGAAAATAATTTTAGTGGTATTTGTCTTAATTTTTGTCGGTGTCATCGGTTTTAATATG  60
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1     ATGAAAATAATTTTAGTGGTATTTGTCTTAATTTTTGTCGGTGTCATCGGTTTTAATATG  60
+
+Query  61    ATAAAAGGCGTAATGATAAGCCGAGCAATTGCAGGAATGCCAGAACCTTCAAGCCCGGTA  120
+             ||||||||||||||||||||||||||||||||||||||||||||| |||||||||| || 
+Sbjct  61    ATAAAAGGCGTAATGATAAGCCGAGCAATTGCAGGAATGCCAGAATCTTCAAGCCCAGTG  120
+
+Query  121   ACCGCACTTGAAGTTCAACCGCGTGAATGGACGCCAGTTATCAATACAACAGGTCTTGTG  180
+             |||||||||||||| ||||| ||||| |||||||||||||| || |||||||||||||||
+Sbjct  121   ACCGCACTTGAAGTACAACCACGTGAGTGGACGCCAGTTATTAACACAACAGGTCTTGTG  180
+
+Query  181   CGTCCAAATCAAGGCGCAATGCTCAGTACACAAAATGCGGGCGCGGTTTCACAAGTACTT  240
+             |||||||||||||||||||||||||||||||||||||| ||  || |||| |||||||||
+Sbjct  181   CGTCCAAATCAAGGCGCAATGCTCAGTACACAAAATGCAGGTACGATTTCTCAAGTACTT  240
+
+Query  241   GTTCAAAATGGACAAAATGTGAAAAAAGGTGAGGTGCTTGTGGAGCTTGATAGTTCTGTT  300
+             || ||||||||||||||||||||||||||||||||||||||||| |||||||||||||||
+Sbjct  241   GTGCAAAATGGACAAAATGTGAAAAAAGGTGAGGTGCTTGTGGAACTTGATAGTTCTGTT  300
+
+Query  301   GAACGAGCTAATCTACAAGCTGCTCAGGCACAATTATCAGCACTTCGTCAAACTTACCAA  360
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 
+Sbjct  301   GAACGAGCTAATCTACAAGCTGCTCAGGCACAATTATCAGCACTTCGTCAAACTTACCAG  360
+
+Query  361   CGTTATGTGGGTTTATTAAATAGCAATGCTGTATCACGTCAAGAAATGGATAACGCAAAA  420
+             ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361   CGTTATGTGGGCTTATTAAATAGCAATGCTGTATCACGTCAAGAAATGGATAACGCAAAA  420
+
+Query  421   GCGGCTTATGATGCTCAAGTAGCTAGTATTGAATCTCTAAAAGCAGCAATTGAACGTCGT  480
+             ||||||||||| |||||| |||| | ||| ||||||||||||||||||||||||||||||
+Sbjct  421   GCGGCTTATGACGCTCAACTAGCCAATATCGAATCTCTAAAAGCAGCAATTGAACGTCGT  480
+
+Query  481   AAAATTGTTGCGCCATTTGATGGCAAAGCAGGTATTGTGAAAGTAAATGTGGGTCAATAT  540
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481   AAAATTGTTGCGCCATTTGATGGCAAAGCAGGTATTGTGAAAGTAAATGTGGGTCAATAT  540
+
+Query  541   GTGAATGTTGGAACAGAAATTGTGCGTGTAGAAGATACTAGCTCAATGAAAGTGGATTTT  600
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  541   GTGAATGTTGGAACAGAAATTGTGCGTGTAGAAGATACTAGCTCAATGAAAGTGGATTTT  600
+
+Query  601   GCTCTTTCACAAAATGATTTAGATAAATTACATATCGGTCAGCGCATTACAGCGACAACA  660
+             ||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||
+Sbjct  601   GCTCTTTCACAAAATGATTTAGATAAATTACATATCGGTCAGCGCGTTACAGCGACAACA  660
+
+Query  661   GATGCTCGCTTGGGCGAAACATTTTCAGCTCGAATCACTGCGATTGAACCTGCCATTAAT  720
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  661   GATGCTCGCTTGGGCGAAACATTTTCAGCTCGAATCACTGCGATTGAACCTGCCATTAAT  720
+
+Query  721   TCATCAACAGGTTTAGTTGATGTTCAGGCTACTTTTGATCCTGAAGATGGGCATAAATTG  780
+             |||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||
+Sbjct  721   TCATCAACAGGTTTAGTTGATGTTCAAGCTACTTTTGATCCTGAAGATGGGCATAAATTG  780
+
+Query  781   CTTTCAGGTATGTTCTCTCGCTTACGCATTGCACTTCCAACTGAAACAAATCAAGTTATC  840
+             |||||||||||||||||||| ||||||||||| |||||||||||||||||||||||| ||
+Sbjct  781   CTTTCAGGTATGTTCTCTCGTTTACGCATTGCGCTTCCAACTGAAACAAATCAAGTTGTC  840
+
+Query  841   GTTCCACAAGTAGCTATTAGCTACAATATGTATGGCGAAATTGCCTATTTACTTGAACCA  900
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  841   GTTCCACAAGTAGCTATTAGCTACAATATGTATGGCGAAATTGCCTATTTACTTGAACCA  900
+
+Query  901   TTATCTGAAGAAGAAAAAGGAAAAATGTCAGGTAATGAAAAATTGGATCATCTCTATCGT  960
+             ||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||
+Sbjct  901   TTATCTGAAGAAGAAAAAGGAAAAATGTCAGGTAATGAAAAATTGGATCGTCTCTATCGT  960
+
+Query  961   GCGAAACAGATCACCGTATTTACTAAAGATCGTCAAGGTGTTTATGCTCAATTACAGGGA  1020
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  961   GCGAAACAGATCACCGTATTTACTAAAGATCGTCAAGGTGTTTATGCTCAATTACAGGGA  1020
+
+Query  1021  AATGAAGTTAAAGCGGGAGATAAAATTATTACAGGCGGTCAGCAAGGTATTGGTAATGGA  1080
+             ||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1021  AATGAAGTTAAAGTGGGAGATAAAATTATTACAGGCGGTCAGCAAGGTATTGGTAATGGA  1080
+
+Query  1081  AGTCTTGTGGAATGGATTAAAAAAGACATTGTGGGTGCAGTAGAGCCTGCACATAAAACA  1140
+             ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1081  AGTCTTGTGGAATGGATTAAAAAAGACATTGTGGGTGCAGTAGAGCCTGCACATAAAACA  1140
+
+Query  1141  CCACTTTAA  1149
+             |||||||||
+Sbjct  1141  CCACTTTAA  1149
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1920016931
+
+
+  Database: hi_alleles_dna.fasta
+    Posted date:  May 3, 2018  1:32 PM
+  Number of letters in database: 1,744,661
+  Number of sequences in database:  1,864
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

@@ -1,0 +1,39 @@
+#### Command  ######## Initiated at Thu Aug 20 09:14:29 2020 ####
+../runAST.py -i pmga/json/rplD/ -s Hi -o AMR/rplD/
+
+runAST_v1.0
+Options are:
+out_dir AMR/rplD/
+species Hi
+input_dir pmga/json/rplD/
+save_intermediate False
+
+PMGA jason file: rplD_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Hi_controls/pmga/json/rplD/rplD_final_results.json
+Loaded gene key for Hi with 23 genes
+Loaded 79 valid features; 79 valid mutations
+
+Loading locus info
+acrR is 564bp
+acrR-31 Mutation reference must match sequence; AREGLNQLSM_H_KLAKEENVAA vs L
+acrR-37 Mutation reference must match sequence; QLSMHKLAKE_E_NVAAGTIYLY vs A
+acrR-121 Mutation reference must match sequence; LPNFKDICKN_V_KNCRWDLFCH vs I
+ftsI is 1833bp
+gyrA is 2643bp
+parC is 2244bp
+parE is 1899bp
+rpoB is 4032bp
+rpoC is 4251bp
+rpoC-1333 Mutation reference must match sequence; ASFQETTRVL_T_EAAVAGKRDE vs L
+rpoC-1349 Mutation reference must match sequence; GKRDELRGLK_E_NVIVGRLIPA vs K
+rplD is 603bp
+rplD-61 Mutation reference must match sequence; VSGSGKKPWR_Q_KGTGRARAGD vs K
+rplD-63 Mutation reference must match sequence; GSGKKPWRQK_G_TGRARAGDIK vs T
+rplV is 333bp
+folA is 483bp
+folA-21 Mutation reference must match sequence; LNNVIGKDNQ_M_PWHLPADLAW vs T
+
+found
+{'HAEM0902'}
+did not find
+{'HAEM1024', 'cat', 'mefA', 'HAEM1020', 'HAEM1394', 'NEIS2210', 'ermB', 'HAEM1263', 'tetK', 'HAEM0632', 'ermF', 'HAEM1018', 'HAEM0906', 'ermC', 'HAEM0118', 'HAEM0633', 'ermA', 'HAEM1019', 'tetB', 'HAEM1649', 'blaROB-1', 'HAEM1650'}

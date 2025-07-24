@@ -1,0 +1,76 @@
+LOCUS       NC_014813                918 bp    DNA     linear   CON 17-DEC-2014
+DEFINITION  Haemophilus influenzae plasmid PB1000, complete sequence.
+ACCESSION   NC_014813 REGION: 2666..3583
+VERSION     NC_014813.1
+DBLINK      BioProject: PRJNA178797
+KEYWORDS    RefSeq.
+SOURCE      Haemophilus influenzae
+  ORGANISM  Haemophilus influenzae
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales;
+            Pasteurellaceae; Haemophilus.
+REFERENCE   1  (bases 1 to 918)
+  AUTHORS   San Millan,A., Giufre,M., Escudero,J.A., Hidalgo,L., Gutierrez,B.,
+            Cerquetti,M. and Gonzalez-Zorn,B.
+  TITLE     Contribution of ROB-1 and PBP3 mutations to the resistance
+            phenotype of a beta-lactamase-positive amoxicillin/clavulanic
+            acid-resistant Haemophilus influenzae carrying plasmid pB1000 in
+            Italy
+  JOURNAL   J. Antimicrob. Chemother. 66 (1), 96-99 (2011)
+   PUBMED   20978001
+REFERENCE   2  (bases 1 to 918)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-DEC-2010) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 918)
+  AUTHORS   San Millan,A. and Gonzalez-Zorn,B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JUN-2010) Animal Health, Universidad Complutense de
+            Madrid, Avda. Puerta de Hierro s/n, Madrid 28040, Spain
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to HM470204.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..918
+                     /organism="Haemophilus influenzae"
+                     /mol_type="genomic DNA"
+                     /strain="BB1059"
+                     /db_xref="taxon:727"
+                     /plasmid="PB1000"
+     gene            1..918
+                     /gene="blaROB-1"
+                     /locus_tag="PB1000_004"
+                     /db_xref="GeneID:10044397"
+     CDS             1..918
+                     /gene="blaROB-1"
+                     /locus_tag="PB1000_004"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="beta-lactamase ROB-1"
+                     /protein_id="YP_004074575.1"
+                     /db_xref="GeneID:10044397"
+                     /translation="MLNKLKIGTLLLLTLTACSPNSVHSVTSNPQPASAPVQQSATQA
+                     TFQQTLANLEQQYQARIGVYVWDTETGHSLSYRADERFAYASTFKALLAGAVLQSLPE
+                     KDLNRTISYSQKDLVSYSPETQKYVGKGMTIAQLCEAAVRFSDNSATNLLLKELGGVE
+                     QYQRILRQLGDNVTHTNRLEPDLNQAKPNDIRDTSTPKQMAMNLNAYLLGNTLTESQK
+                     TILWNWLDNNATGNPLIRAATPTSWKVYDKSGAGKYGVRNDIAVVRIPNRKPIVMAIM
+                     STQFTEEAKFNNKLVEDAAKQVFHTLQLN"
+ORIGIN      
+        1 atgttaaata agttaaaaat cggcacatta ttattgctga cattaacggc ttgttcgccc
+       61 aattctgttc attcggtaac gtctaatccg cagcctgcta gtgcgcctgt gcaacaatca
+      121 gccacacaag ccacctttca acagactttg gcgaatttgg aacagcagta tcaagcccga
+      181 attggcgttt atgtatggga tacagaaacg ggacattctt tgtcttatcg tgcagatgaa
+      241 cgctttgctt atgcgtccac tttcaaggcg ttgttggctg gggcggtgtt gcaatcgctg
+      301 cctgaaaaag atttaaatcg taccatttca tatagccaaa aagatttggt tagttattct
+      361 cccgaaaccc aaaaatacgt tggcaaaggc atgacgattg cccaattatg tgaagcagcc
+      421 gtgcggttta gcgacaacag cgcgaccaat ttgctgctca aagaattggg tggcgtggaa
+      481 caatatcaac gtattttgcg acaattaggc gataacgtaa cccataccaa tcggctagaa
+      541 cccgatttaa atcaagccaa acccaacgat attcgtgata cgagtacacc caaacaaatg
+      601 gcgatgaatt taaatgcgta tttattgggc aacacattaa ccgaatcgca aaaaacgatt
+      661 ttgtggaatt ggttggacaa taacgcaaca ggcaatccat tgattcgcgc tgctacgcca
+      721 acatcgtgga aagtgtacga taaaagcggg gcgggtaaat atggtgtacg caatgatatt
+      781 gcggtggttc gcataccaaa tcgcaaaccg attgtgatgg caatcatgag tacgcaattt
+      841 accgaagaag ccaaattcaa caataaatta gtagaagatg cagcaaagca agtatttcat
+      901 actttacagc tcaactaa
+//
+

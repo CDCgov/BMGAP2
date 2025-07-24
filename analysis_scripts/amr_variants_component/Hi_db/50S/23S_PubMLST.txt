@@ -1,0 +1,43 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: hi_alleles_dna.fasta
+           1,864 sequences; 1,744,661 total letters
+
+
+
+Query= NC_000907.1:626083-628985 Haemophilus influenzae Rd KW20 chromosome,
+complete genome
+
+Length=2903
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 4901152320
+
+
+  Database: hi_alleles_dna.fasta
+    Posted date:  May 3, 2018  1:32 PM
+  Number of letters in database: 1,744,661
+  Number of sequences in database:  1,864
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

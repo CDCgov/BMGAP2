@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:14:31 2020 ####
+../runAST.py -i pmga/json/ROB_1/ -s Nm -o AMR/ROB_1/
+
+runAST_v1.0
+Options are:
+out_dir AMR/ROB_1/
+species Nm
+save_intermediate False
+input_dir pmga/json/ROB_1/
+
+PMGA jason file: ROB_1_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/ROB_1/ROB_1_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'blaROB-1'}
+did not find
+{'ermA', 'mefA', 'gyrA', 'rpoB', 'cat', 'NEIS2357', 'ermC', 'tetK', 'NEIS1753', 'NEIS1320', 'ermF', 'ermB', 'NEIS0123', 'NEIS0414', 'NEIS2210', 'penA', 'tetB', 'NEIS1525'}

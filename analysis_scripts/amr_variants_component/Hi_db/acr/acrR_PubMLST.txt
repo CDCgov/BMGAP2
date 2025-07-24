@@ -1,0 +1,92 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: hi_alleles_dna.fasta
+           1,864 sequences; 1,744,661 total letters
+
+
+
+Query= ENA|AUG45106|AUG45106.1 Haemophilus influenzae TetR/AcrR family
+transcriptional regulator : Location:1..564
+
+Length=564
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  HAEM1018_1                                                          987     0.0  
+
+
+> HAEM1018_1
+Length=564
+
+ Score = 987 bits (534),  Expect = 0.0
+ Identities = 554/564 (98%), Gaps = 0/564 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGCGACAAGCTAAAACAGACTTAGCTGAACAGATTTTTTCAGCGACAGATCGTTTAATG  60
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1    ATGCGACAAGCTAAAACAGACTTAGCTGAACAGATTTTTTCAGCGACAGATCGTTTAATG  60
+
+Query  61   GCAAGAGAAGGGTTGAATCAACTTTCTATGCACAAACTTGCGAAAGAAGAAAATGTAGCA  120
+            ||||||||||||||||||||||||||||||||||||||||||||||||| |||||| || 
+Sbjct  61   GCAAGAGAAGGGTTGAATCAACTTTCTATGCACAAACTTGCGAAAGAAGCAAATGTGGCC  120
+
+Query  121  GCAGGAACGATTTACCTTTATTTTAAAAACAAAGATGAGTTGCTCGAACAATTTGCACAC  180
+            |||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||
+Sbjct  121  GCAGGAACGATTTACCTTTATTTTAAAAACAAAGATGAGTTGCTTGAACAATTTGCACAC  180
+
+Query  181  AGAGTGTTTTCAATGTTTATGGCAACACTTGAAAAAGATTTTGATGAAACTAAACCTTTT  240
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  181  AGAGTGTTTTCAATGTTTATGGCAACACTTGAAAAAGATTTTGATGAAACTAAACCTTTT  240
+
+Query  241  TTCGAACAGTATCGACAAATGTGGAAAAACATTTGGTATTTCTTACAAGAAAATCCCACT  300
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  241  TTCGAACAGTATCGACAAATGTGGAAAAACATTTGGTATTTCTTACAAGAAAATCCCACT  300
+
+Query  301  ATCTTATCCAATTTAAAGCAATATGAATCTTTGCCGAATTTCAAGGATATTTGTAAAAAC  360
+            ||  |||||||||||||||||||||||||||||||||||||||| |||||||||||||||
+Sbjct  301  ATTCTATCCAATTTAAAGCAATATGAATCTTTGCCGAATTTCAAAGATATTTGTAAAAAC  360
+
+Query  361  GTTAAAAATTGTCGTTGGGATTTATTTTGTCATCAAGCCCAAAAAGCTGGCTTATTAGCG  420
+             |||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  361  ATTAAAAATTGCCGTTGGGATTTATTTTGTCATCAAGCCCAAAAAGCTGGCTTATTAGCG  420
+
+Query  421  GAATTATCTGAAGATATTCTCTTTTTATTAAGTTTGAAAACGGCGATAAATTTAGCTTCT  480
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||
+Sbjct  421  GAATTATCTGAAGATATTCTCTTTTTATTAAGTTTGAAAACGGCGATAAATTTAGCCTCT  480
+
+Query  481  GATGCAAAATTTATCGATTTCGATCTTAAGCCTGAAATTTTAGAATCTGTGATTGAACGC  540
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  481  GATGCAAAATTTATCGATTTCGATCTTAAGCCTGAAATTTTAGAATCTGTGATTGAACGC  540
+
+Query  541  TCTTGGCGTGCGATTCAGAAATAA  564
+            ||||||||||||||||||||||||
+Sbjct  541  TCTTGGCGTGCGATTCAGAAATAA  564
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 926095731
+
+
+  Database: hi_alleles_dna.fasta
+    Posted date:  May 3, 2018  1:32 PM
+  Number of letters in database: 1,744,661
+  Number of sequences in database:  1,864
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

@@ -1,0 +1,149 @@
+LOCUS       NC_000907               1833 bp    DNA     linear   CON 02-AUG-2016
+DEFINITION  Haemophilus influenzae Rd KW20 chromosome, complete genome.
+ACCESSION   NC_000907 REGION: 1197840..1199672
+VERSION     NC_000907.1
+DBLINK      BioProject: PRJNA57771
+            Assembly: GCF_000027305.1
+KEYWORDS    RefSeq.
+SOURCE      Haemophilus influenzae Rd KW20
+  ORGANISM  Haemophilus influenzae Rd KW20
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales;
+            Pasteurellaceae; Haemophilus.
+REFERENCE   1  (bases 1 to 1833)
+  AUTHORS   Gmuender,H., Kuratli,K., Di Padova,K., Gray,C.P., Keck,W. and
+            Evers,S.
+  TITLE     Gene expression changes triggered by exposure of Haemophilus
+            influenzae to novobiocin or ciprofloxacin: combined transcription
+            and translation analysis
+  JOURNAL   Genome Res. 11 (1), 28-42 (2001)
+   PUBMED   11156613
+REFERENCE   2  (bases 1 to 1833)
+  AUTHORS   Langen,H., Takacs,B., Evers,S., Berndt,P., Lahm,H.W., Wipf,B.,
+            Gray,C. and Fountoulakis,M.
+  TITLE     Two-dimensional map of the proteome of Haemophilus influenzae
+  JOURNAL   Electrophoresis 21 (2), 411-429 (2000)
+   PUBMED   10675023
+REFERENCE   3  (bases 1 to 1833)
+  AUTHORS   Fountoulakis,M., Juranville,J.F., Roder,D., Evers,S., Berndt,P. and
+            Langen,H.
+  TITLE     Reference map of the low molecular mass proteins of Haemophilus
+            influenzae
+  JOURNAL   Electrophoresis 19 (10), 1819-1827 (1998)
+   PUBMED   9719565
+REFERENCE   4  (bases 1 to 1833)
+  AUTHORS   Tatusov,R.L., Mushegian,A.R., Bork,P., Brown,N.P., Hayes,W.S.,
+            Borodovsky,M., Rudd,K.E. and Koonin,E.V.
+  TITLE     Metabolism and evolution of Haemophilus influenzae deduced from a
+            whole-genome comparison with Escherichia coli
+  JOURNAL   Curr. Biol. 6 (3), 279-291 (1996)
+   PUBMED   8805245
+REFERENCE   5  (bases 1 to 1833)
+  AUTHORS   Smith,H.O., Tomb,J.F., Dougherty,B.A., Fleischmann,R.D. and
+            Venter,J.C.
+  TITLE     Frequency and distribution of DNA uptake signal sequences in the
+            Haemophilus influenzae Rd genome
+  JOURNAL   Science 269 (5223), 538-540 (1995)
+   PUBMED   7542802
+REFERENCE   6  (bases 1 to 1833)
+  AUTHORS   Fleischmann,R.D., Adams,M.D., White,O., Clayton,R.A.,
+            Kirkness,E.F., Kerlavage,A.R., Bult,C.J., Tomb,J.-F.,
+            Dougherty,B.A., Merrick,J.M., McKenney,K., Sutton,G.G.,
+            FitzHugh,W., Fields,C.A., Gocayne,J.D., Scott,J.D., Shirley,R.,
+            Liu,L.I., Glodek,A., Kelley,J.M., Weidman,J.F., Phillips,C.A.,
+            Spriggs,T., Hedblom,E., Cotton,M.D., Utterback,T., Hanna,M.C.,
+            Nguyen,D.T., Saudek,D.M., Brandon,R.C., Fine,L.D., Fritchman,J.L.,
+            Fuhrmann,J.L., Geoghagen,N.S., Gnehm,C.L., McDonald,L.A.,
+            Small,K.V., Fraser,C.M., Smith,H.O. and Venter,J.C.
+  TITLE     Whole-genome random sequencing and assembly of Haemophilus
+            influenzae Rd
+  JOURNAL   Science 269 (5223), 496-512 (1995)
+   PUBMED   7542800
+REFERENCE   7  (bases 1 to 1833)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-SEP-2004) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   8  (bases 1 to 1833)
+  CONSRTM   NCBI Microbial Genomes Annotation Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (25-JUN-2001) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from L42023.
+            RefSeq Category: Reference Genome
+                        FGS: First Genome sequenced
+                        UPR: UniProt Genome
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..1833
+                     /organism="Haemophilus influenzae Rd KW20"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:71421"
+     misc_feature    <1..>1833
+                     /gene="ftsI"
+                     /locus_tag="HI1132"
+                     /note="REFSEQ gene predictions performed by GeneMark
+                     2.4/GeneMark.hmm 2.0 with comparison to original submitter
+                     provided annotation; tRNA sequences predicted using
+                     tRNAscan-SE 1.21"
+     gene            1..1833
+                     /gene="ftsI"
+                     /locus_tag="HI1132"
+                     /db_xref="GeneID:950626"
+     CDS             1..1833
+                     /gene="ftsI"
+                     /locus_tag="HI1132"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="similar to GB:D10483 SP:P04286 GB:K00137 GB:S49802
+                     GB:S49875"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="penicillin-binding protein 3"
+                     /protein_id="NP_439290.1"
+                     /db_xref="GeneID:950626"
+                     /translation="MVKFNSSRKSGKSKKTIRKLTAPETVKQNKPQKVFEKCFMRGRY
+                     MLSTVLILLGLCALVARAAYVQSINADTLSNEADKRSLRKDEVLSVRGSILDRNGQLL
+                     SVSVPMSAIVADPKTMLKENSLADKERIAALAEELGMTENDLVKKIEKNSKSGYLYLA
+                     RQVELSKANYIRRLKIKGIILETEHRRFYPRVEEAAHVVGYTDIDGNGIEGIEKSFNS
+                     LLVGKDGSRTVRKDKRGNIVAHISDEKKYDAQDVTLSIDEKLQSMVYREIKKAVSENN
+                     AESGTAVLVDVRTGEVLAMATAPSYNPNNRVGVKSELMRNRAITDTFEPGSTVKPFVV
+                     LTALQRGVVKRDEIIDTTSFKLSGKEIVDVAPRAQQTLDEILMNSSNRGVSRLALRMP
+                     PSALMETYQNAGLSKPTDLGLIGEQVGILNANRKRWADIERATVAYGYGITATPLQIA
+                     RAYATLGSFGVYRPLSITKVDPPVIGKRVFSEKITKDIVGILEKVAIKNKRAMVEGYR
+                     VGVKTGTARKIENGHYVNKYVAFTAGIAPISDPRYALVVLINDPKAGEYYGGAVSAPV
+                     FSNIMGYALRANAIPQDAEAAENTTTKSAKRIVYIGEHKNQKVN"
+ORIGIN      
+        1 atggtgaaat ttaattcctc gcgtaaatca ggtaagtcaa aaaaaacaat tagaaaattg
+       61 accgcacctg aaactgtaaa gcaaaacaag cctcaaaagg tgtttgaaaa atgctttatg
+      121 cgtggacgtt atatgctttc tacggttctt attttacttg gcctgtgtgc tttagtcgca
+      181 cgagcagctt atgttcaatc tattaatgcc gatacgttat cgaatgaagc ggataagcgt
+      241 tctttgcgta aagatgaagt attatcggtg cgtggttcta ttttagatcg taatggtcag
+      301 cttttatctg taagcgtgcc gatgagcgcg attgtggcag atccaaaaac gatgttgaag
+      361 gaaaattcgc ttgcggataa agaacgaatt gcagctttag ccgaagaatt aggtatgact
+      421 gaaaatgatt tagtgaaaaa aattgagaaa aattctaaat ctggttattt gtatttagca
+      481 cgtcaagttg aattaagtaa agctaactat attcgtagat taaaaattaa gggtattatt
+      541 ttagaaacag agcatcgccg tttttatcct cgtgtagaag aagctgcaca cgtggtgggt
+      601 tatacggata ttgatggaaa tggtattgaa ggcattgaga aaagttttaa ttccctgctt
+      661 gttggtaaag acggttcacg tactgttcgt aaagataaac gtgggaatat tgttgcacat
+      721 atctccgatg agaaaaaata tgatgcacaa gatgttacct taagtatcga tgaaaaattg
+      781 caatctatgg tgtatcgtga gattaaaaag gcggtgtctg agaataatgc tgagtctggt
+      841 actgcggtgt tagttgatgt tcgaacaggg gaagtgttag ctatggcgac tgcgccctct
+      901 tataatccaa acaaccgtgt cggcgtgaaa tcagagttaa tgcgtaaccg tgcaattacc
+      961 gatacttttg agccaggttc tacggtaaaa cctttcgttg ttttaaccgc acttcaacga
+     1021 ggtgtagtta aacgagatga aattattgat actacgtcct ttaaattaag cggtaaagaa
+     1081 attgtggacg ttgcaccacg tgctcagcaa actttagacg agattttaat gaactctagt
+     1141 aaccgtggtg taagtcgtct tgcattacgt atgccaccta gtgcattaat ggaaacttat
+     1201 caaaatgcag gtttaagtaa accgacagat ttaggcttga tcggagagca agttgggatt
+     1261 ttgaatgcaa atcgtaaacg ctgggcagat attgagcgtg caacagtcgc ttatggttat
+     1321 ggtattactg cgacaccttt acaaattgct cgtgcctatg caacccttgg tagtttcggt
+     1381 gtttatcgtc cgctttctat cactaaagtt gatccgccag ttattgggaa acgggttttc
+     1441 tctgaaaaaa taactaaaga tattgtggga attttagaga aagtagcaat taaaaataaa
+     1501 cgcgcaatgg tggaaggcta ccgtgtcggc gtaaaaacag gtacggcacg taagattgaa
+     1561 aatggacatt atgtaaataa gtatgtggca tttactgcgg gtattgcacc aattagtgat
+     1621 cctcgttatg cattagtggt tttgatcaat gatccaaaag caggagaata ttatggtggt
+     1681 gcggtttctg cccctgtatt ctctaacatt atgggctatg cgttacgtgc aaatgctatt
+     1741 ccgcaagatg ctgaagcagc tgaaaacaca acaacgaaaa gtgcaaaacg tattgtttat
+     1801 attggcgaac acaagaatca aaaagtgaat taa
+//
+

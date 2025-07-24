@@ -1,0 +1,27 @@
+#### Command  ######## Initiated at Thu Aug 20 09:13:44 2020 ####
+../runAST.py -i pmga/json/GENBANK_TEM-1/ -s Nm -o AMR/GENBANK_TEM-1/
+
+runAST_v1.0
+Options are:
+out_dir AMR/GENBANK_TEM-1/
+input_dir pmga/json/GENBANK_TEM-1/
+species Nm
+save_intermediate False
+
+PMGA jason file: GENBANK_TEM-1_final_results.json
+Absolute path: /scicomp/home/ymw8/Software/scripts/amr_variants_component/Nm_controls/pmga/json/GENBANK_TEM-1/GENBANK_TEM-1_final_results.json
+Loaded gene key for Nm with 19 genes
+Loaded 35 valid features; 35 valid mutations
+
+Loading locus info
+Only have sequence file for 16/19 genes
+gyrA is 2751bp
+ponA is 2397bp
+penA is 1746bp
+rpoB is 4176bp
+parC is 2304bp
+
+found
+{'NEIS2357'}
+did not find
+{'ermC', 'NEIS2210', 'ermF', 'mefA', 'ermA', 'NEIS1525', 'cat', 'tetB', 'penA', 'NEIS0123', 'ermB', 'blaROB-1', 'NEIS1753', 'rpoB', 'gyrA', 'tetK', 'NEIS0414', 'NEIS1320'}
