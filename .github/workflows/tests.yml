@@ -15,17 +15,17 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
-            - name: Set up Conda
-              uses: conda-incubator/setup-miniconda@v2
+            - uses: prefix-dev/setup-pixi@v0.8.14
               with:
-                  auto-update-conda: true
-                  environment-file: BMGAP_Conda_all.yml
-                  activate-environment: base
-
-            - name: Install dependencies
+                  pixi-version: v0.49.0
+                  cache: true
+                  auth-host: prefix.dev
+                  auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
+            - name: Set up pixi env
               run: |
-                  conda env update --file BMGAP_Conda_all.yml
-                  conda install -y awscli sra-tools
+                  pixi init --import BMGAP_Conda_all.yml
+                  pixi add awscli sra-tools
+                  pixi install
             
             - name: download test data
               run: |
