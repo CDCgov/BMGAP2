@@ -35,7 +35,7 @@ jobs:
                     mv -v test.in/${SRR}_2.fastq.gz test.in/${SRR}_R2.fastq.gz
                   done
                   ls -lh test.in
-                  #aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ./analysis_scripts/hg38
+                  aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ./analysis_scripts/hg38
                   ls -lh test.in
 
                     
