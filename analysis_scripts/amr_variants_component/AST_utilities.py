@@ -196,6 +196,15 @@ def identify_mutations_in_single_JSON(loci_dict,variant_info,locus_references,lo
                         seq = seq[:stop]   
                     else:
                         mutation_dict["{}_firstStop".format(locus_name)] = 'None'
+                        # If the sequence starts with *, find any sequence between two stop codons.
+                        match = re.search(r"\*([A-Z]+)\*?", str(seq))
+                        if match:
+                            seq = Seq(match.group(1))
+                        # Otherwise if this is a string of just stop codons (really unexpected!),
+                        # assign a dummy sequence to avoid biopython errors later
+                        else:
+                            seq = Seq("WWWWWWW")
+
                     alignments = pairwise2.align.globalds(str(seq),str(ref_seq),MatrixInfo.blosum95,-10,-0.1) ##default gap open and extend for culstal. 
                     
                 elif is_dna:
