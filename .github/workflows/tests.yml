@@ -12,6 +12,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-22.04
+        strategy:
+            matrix:
+                SRR: [SRR8034137]
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -19,6 +22,7 @@ jobs:
               run: |
                 curl -fsSL https://pixi.sh/install.sh | sh
                 echo "$HOME/.pixi/bin" >> $GITHUB_PATH
+                echo "$HOME/BMGAP2/analysis_scripts" >> $GITHUB_PATH
             - name: Set up pixi env
               run: |
                   pixi init --import BMGAP_Conda_all.yml
@@ -28,17 +32,16 @@ jobs:
             - name: download test data
               run: |
                   mkdir -p test.in
-                  for SRR in SRR8034137; do \
-                    pixi run fasterq-dump $SRR --threads 1 --outdir test.in --split-files --skip-technical && \
-                    gzip -v test.in/*.fastq && \
-                    mv -v test.in/${SRR}_1.fastq.gz test.in/${SRR}_R1.fastq.gz && \
-                    mv -v test.in/${SRR}_2.fastq.gz test.in/${SRR}_R2.fastq.gz
-                  done
-                  ls -lh test.in
+                  pixi run fasterq-dump $SRR --threads 1 --outdir test.in --split-files --skip-technical
+                  gzip -v test.in/*.fastq
+                  mv -v test.in/${SRR}_1.fastq.gz test.in/${SRR}_R1.fastq.gz
+                  mv -v test.in/${SRR}_2.fastq.gz test.in/${SRR}_R2.fastq.gz
+            - name: download human genome
+              run: |
                   aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ./analysis_scripts/hg38
-                  ls -lh test.in
-
                     
-            #- name: Run tests
-           #  run: |
-                
+            - name: Run tests
+              run: |
+                $ANALYSIS_SCRIPTS/Alignment.sh test.in/${SRR}_R1.fastq.gz test.in/${SRR}_R2.fastq.gz test.out "$SRR"
+                ls -lhR test.out
+                              
