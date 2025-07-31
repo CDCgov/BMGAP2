@@ -12,6 +12,7 @@ on:
 env:
     # increment this number if you want to rebuild the cache
     cache-build-number: 2
+    cache-pixi-path: ${{ github.workspace }}/.pixi
 
 jobs:
     build:
@@ -34,6 +35,7 @@ jobs:
               with:
                 path: |
                   $GITHUB_WORKSPACE/.pixi
+                  ${{ env.cache-pixi-path }}
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ env.cache-build-number }}
             
             - name: Set up pixi env
@@ -42,6 +44,4 @@ jobs:
                   pixi init --import BMGAP_Conda_all.yml
                   pixi add awscli sra-tools
                   pixi --verbose --verbose install
-                  #ls $GITHUB_WORKSPACE -Alh
-                  #ls $GITHUB_WORKSPACE/.pixi/envs/default -AlhR
-                  tree $GITHUB_WORKSPACE/.pixi/envs/default
+                  ls -lhSA ${{ env.cache-pixi-path }}
