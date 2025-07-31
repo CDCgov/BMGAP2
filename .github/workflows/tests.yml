@@ -37,8 +37,9 @@ jobs:
                   pixi add awscli sra-tools
                   pixi install
                   pwd
-                  echo $HOME
+                  echo $HOME $GITHUB_PATH $GITHUB_WORKSPACE
                   ls -lhRA $HOME/BMGAP2
+                  exit 1
             
             - name: download test data
               run: |
