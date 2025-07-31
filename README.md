@@ -5,37 +5,45 @@ This repository holds the code to run the pipeline for Bacterial Meningitis Geno
 This pipeline is used for processing raw reads from a sequencing run and currently only supports Illumina platforms.  This pipeline was tested on Sun Grid Engine (SGE) and automatically submits jobs to your cluster.  To pass variables in from the Conda environment, ensure the use of -V when submitting jobs.
 
 ### Installation
+
 Creating the environment from *yml file:
-```
+
+```bash
 conda env create -f BMGAP_Conda_all.yml
 ```
+
 Download and store human genome:
-```
+
+```bash
 aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ./analysis_scripts/hg38
 ```
 
 Build the PubMLST database in the [PMGA folder](./analysis_scripts/PMGA) within the analysis_scripts directory (**NOTE: The database should be updated regularly based on usage frequency to ensure the most current PubMLST data):
-```
+
+```bash
 python build_pubmlst_dbs.py -o pubmlst_dbs_all
 ```
 
 Build the RefSeq Mash sketch for BMScan and PMGA:
-```
+
+```bash
 wget -qO- http://gembox.cbcb.umd.edu/mash/RefSeqSketchesDefaults.msh.gz | gunzip | tee analysis_scripts/SpeciesDB/lib/RefSeqSketchesDefaults.msh > analysis_scripts/PMGA/lib/RefSeqSketchesDefaults.msh
 ```
 
 Unzip the MLST file in the locusextractor folder:
-```
+
+```bash
 gunzip analysis_scripts/locusextractor/settings_antibiotics/lookupTables/Isolate2MLST2Species.txt.gz
 ```
 
 ### Usage
-```
+
+```bash
 BMGAP-RUNNER.sh <FASTQ_DIR> <ANALYSIS_DIRECTORY>
 
 arguments:
-	FASTQ_DIR		Input Directory: Directory of paired-end FASTQ files to analyze
-	ANALYSIS_DIRECTORY	Output Directory: Directory where results should be placed in 
+  FASTQ_DIR           Input Directory: Directory of paired-end FASTQ files to analyze
+  ANALYSIS_DIRECTORY  Output Directory: Directory where results should be placed in 
 ```
 
 ```mermaid
@@ -75,19 +83,31 @@ flowchart TB
     b4 --> b5
     b5 --> b6
 ```
+
 ### Data Sharing request
+
 We encourage you to send results to CDC to have the most robust molecular surveillance system.
 
 The following is how you can submit data to our national molecular surveillance system from [analysis_scripts](./analysis_scripts):
-```
+
+```bash
 PrepareToShare.sh <Result directory> <Lab_Name>
 ```
-This will produce a .tgz file.  Please attach this compressed file to an email along with a metadata spreadsheet to mpdlb_informatics@cdc.gov.
+
+This will produce a .tgz file.  Please attach this compressed file to an email along with a metadata spreadsheet to `mpdlb_informatics@cdc.gov`.
 
 By providing data back to CDC, you will help enrich our surveillance system and will help other public health labs in the process, even across jurisdictional lines. Also by providing data back to CDC, you are allowing us to place the data in a secure database accessible only by our partners in public health.
 
-CDC database can be accessible by using SAMS account.  If you would like access to a SAMS account, please reach out to mpdlb_informatics@cdc.gov with a request.
-*User can only access their own data , depending on the permission
+CDC database can be accessible by using SAMS account.  If you would like access to a SAMS account, please reach out to `mpdlb_informatics@cdc.gov` with a request [^1].
+
+^1: User can only access their own data, depending on the permission
 
 ### Testing the pipeline
+
 To verify the proper installation of the pipeline, database and dependencies, from NCBI, download [SRR8034137](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR8034137&display=metadata).  Once downloaded, change the name convention from SRR8034137_1.fastq.gz and SRR8034137_2.fastq.gz to SRR8034137_R1.fastq.gz and SRR8034137_R2.fastq.gz.  Run the test isolate and compare to the expected results found in the [test folder](./test).
+
+Here is one example of how to download `SRR8034137` into a folder `test.in`.
+
+```bash
+fasterq-dump SRR8034137 --threads 1 --outdir test.in --split-files --skip-technical
+```
