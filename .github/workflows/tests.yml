@@ -67,7 +67,7 @@ jobs:
               with:
                 path: |
                   ${{ env.cache-hg-path }}
-                key: ${{ runner.os }}-hg38-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ matrix.SRR }}
+                key: ${{ runner.os }}-hg38-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ matrix.SRR }}-${{ env.cache-build-number }}
             
             - name: download human genome
               if: steps.cache-human-genome.outputs.cache-hit != 'true'
