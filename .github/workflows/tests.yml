@@ -27,7 +27,7 @@ jobs:
               id: cache-pixi-env
               uses: actions/cache@v4
               with:
-                path: $HOME/.pixi/envs
+                path: $GITHUB_WORKSPACE/.pixi/envs
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ matrix.SRR }}
             
             - name: Set up pixi env
@@ -36,10 +36,8 @@ jobs:
                   pixi init --import BMGAP_Conda_all.yml
                   pixi add awscli sra-tools
                   pixi install
-                  pwd
-                  echo $HOME $GITHUB_PATH $GITHUB_WORKSPACE
-                  ls -lhRA $HOME/BMGAP2
-                  exit 1
+                  ls -ARhl $GITHUB_WORKSPACE
+                  exit 3
             
             - name: download test data
               run: |
