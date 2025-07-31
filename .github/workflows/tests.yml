@@ -75,6 +75,4 @@ jobs:
                   aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ${{ env.cache-hg-path }}
             - name: view environment
               run: |
-                ls -lh $HOME
-                echo
-                ls -lhR $GITHUB_WORKSPACE/analysis_scripts
+                tree $GITHUB_WORKSPACE
