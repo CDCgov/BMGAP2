@@ -35,9 +35,9 @@ jobs:
               run: |
                   pixi init --import BMGAP_Conda_all.yml
                   pixi add awscli sra-tools
-                  pixi install
-                  ls $GITHUB_WORKSPACE -Alh
-                  ls $GITHUB_WORKSPACE/.pixi/envs -AlhR
+                  pixi --verbose install
+                  #ls $GITHUB_WORKSPACE -Alh
+                  #ls $GITHUB_WORKSPACE/.pixi/envs/default -AlhR
             
             - name: cache-SRR
               id: cache-SRR
@@ -50,7 +50,7 @@ jobs:
               run: |
                   mkdir -pv test.in/${{ matrix.SRR }}
                   pixi run fasterq-dump ${{ matrix.SRR }} --threads 1 --outdir test.in/${{ matrix.SRR }} --split-files --skip-technical
-                  gzip -v test.in/*.fastq
+                  gzip -v test.in/${{matrix.SRR }}/*.fastq
                   mv -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz
                   mv -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz
             
