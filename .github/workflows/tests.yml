@@ -22,7 +22,7 @@ jobs:
               run: |
                 curl -fsSL https://pixi.sh/install.sh | sh
                 echo "$HOME/.pixi/bin" >> $GITHUB_PATH
-                echo "$HOME/BMGAP2/analysis_scripts" >> $GITHUB_PATH
+                echo "$GITHUB_WORKSPACE/analysis_scripts" >> $GITHUB_PATH
             - name: cache-pixi-env
               id: cache-pixi-env
               uses: actions/cache@v4
@@ -36,6 +36,8 @@ jobs:
                   pixi init --import BMGAP_Conda_all.yml
                   pixi add awscli sra-tools
                   pixi install
+                  ls $GITHUB_WORKSPACE -Alh
+                  ls $GITHUB_WORKSPACE/.pixi/envs -AlhR
             
             - name: cache-SRR
               id: cache-SRR
