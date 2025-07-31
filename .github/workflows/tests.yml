@@ -28,7 +28,7 @@ jobs:
               id: cache-pixi-env
               uses: actions/cache@v4
               with:
-                path: $GITHUB_WORKSPACE/.pixi/
+                path: /home/runner/work/BMGAP2/BMGAP2/.pixi/envs
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}
             
             - name: Set up pixi env
