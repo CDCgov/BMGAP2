@@ -27,13 +27,5 @@ jobs:
               id: cache-pixi-env
               uses: actions/cache@v4
               with:
-                path: $HOME/.pixi/envs/default
+                path: $HOME/.pixi/envs
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ matrix.SRR }}
-            
-            - name: Set up pixi env
-              if: steps.cache-pixi-env.outputs.cache-hit != 'true'
-              run: |
-                  pixi init --import BMGAP_Conda_all.yml
-                  pixi add awscli sra-tools
-                  pixi install
- 
