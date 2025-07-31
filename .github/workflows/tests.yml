@@ -32,16 +32,18 @@ jobs:
             - name: download test data
               run: |
                   mkdir -p test.in
-                  pixi run fasterq-dump $SRR --threads 1 --outdir test.in --split-files --skip-technical
+                  pixi run fasterq-dump ${{ matrix.SRR }} --threads 1 --outdir test.in --split-files --skip-technical
                   gzip -v test.in/*.fastq
-                  mv -v test.in/${SRR}_1.fastq.gz test.in/${SRR}_R1.fastq.gz
-                  mv -v test.in/${SRR}_2.fastq.gz test.in/${SRR}_R2.fastq.gz
+                  mv -v test.in/${{ matrix.SRR }}_1.fastq.gz test.in/${{ matrix.SRR }}_R1.fastq.gz
+                  mv -v test.in/${{ matrix.SRR }}_2.fastq.gz test.in/${{ matrix.SRR }}_R2.fastq.gz
             - name: download human genome
               run: |
                   aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ./analysis_scripts/hg38
-                    
+            - name: view environment
+              run: |
+                ls -lh test.in
+                ls -lhSR ./analysis_scripts
             - name: Run tests
               run: |
-                $ANALYSIS_SCRIPTS/Alignment.sh test.in/${SRR}_R1.fastq.gz test.in/${SRR}_R2.fastq.gz test.out "$SRR"
+                $ANALYSIS_SCRIPTS/Alignment.sh test.in/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}_R2.fastq.gz test.out "$SRR"
                 ls -lhR test.out
-                              
