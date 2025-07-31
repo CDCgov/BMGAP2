@@ -100,7 +100,7 @@ By providing data back to CDC, you will help enrich our surveillance system and 
 
 CDC database can be accessible by using SAMS account.  If you would like access to a SAMS account, please reach out to `mpdlb_informatics@cdc.gov` with a request [^1].
 
-^1: User can only access their own data, depending on the permission
+[^1]: User can only access their own data, depending on the permission
 
 ### Testing the pipeline
 
