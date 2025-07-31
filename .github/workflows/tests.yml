@@ -28,7 +28,7 @@ jobs:
               id: cache-pixi-env
               uses: actions/cache@v4
               with:
-                path: $GITHUB_WORKSPACE/.pixi
+                path: $GITHUB_WORKSPACE/.pixi/
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}
             
             - name: Set up pixi env
@@ -40,10 +40,3 @@ jobs:
                   #ls $GITHUB_WORKSPACE -Alh
                   #ls $GITHUB_WORKSPACE/.pixi/envs/default -AlhR
                   tree $GITHUB_WORKSPACE/.pixi/envs/default
-            - name: save-pixi
-              id: save-pixi
-              uses: actions/cache/save@v4
-              with:
-                path: |
-                  $GITHUB_WORKSPACE/.pixi
-                key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}
