@@ -65,5 +65,5 @@ jobs:
                 ls -lhSR $HOME/BMGAP2
             - name: Run tests
               run: |
-                $ANALYSIS_SCRIPTS/Alignment.sh test.in/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}_R2.fastq.gz test.out "$SRR"
+                Alignment.sh test.in/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}_R2.fastq.gz test.out "$SRR"
                 ls -lhR test.out
