@@ -37,11 +37,18 @@ jobs:
                   pixi add awscli sra-tools
                   pixi install
             
+            - name: cache-SRR
+              id: cache-SRR
+              uses: actions/cache@v4
+              with:
+                path: test.in/${{ matrix.SRR }}
+                key: ${{ runner.os }}-SRR-${{ matrix.SRR }}-${{ hashFiles('BMGAP_Conda_all.yml') }}
             - name: download test data
+              if: steps.cache-SRR.outputs.cache-hit != 'true'
               run: |
-                  mkdir -p test.in
-                  pixi run fasterq-dump ${{ matrix.SRR }} --threads 1 --outdir test.in --split-files --skip-technical
+                  mkdir -pv test.in/${{ matrix.SRR }}
+                  pixi run fasterq-dump ${{ matrix.SRR }} --threads 1 --outdir test.in/${{ matrix.SRR }} --split-files --skip-technical
                   gzip -v test.in/*.fastq
-                  mv -v test.in/${{ matrix.SRR }}_1.fastq.gz test.in/${{ matrix.SRR }}_R1.fastq.gz
-                  mv -v test.in/${{ matrix.SRR }}_2.fastq.gz test.in/${{ matrix.SRR }}_R2.fastq.gz
+                  mv -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz
+                  mv -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz
             
