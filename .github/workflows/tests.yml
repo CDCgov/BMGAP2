@@ -36,8 +36,9 @@ jobs:
                   pixi init --import BMGAP_Conda_all.yml
                   pixi add awscli sra-tools
                   pixi install
-                  ls -lhA $HOME
-                  ls -lhR $HOME/.pixi
+                  pwd
+                  echo $HOME
+                  ls -lhRA $HOME/BMGAP2
             
             - name: download test data
               run: |
