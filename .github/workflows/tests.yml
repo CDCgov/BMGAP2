@@ -78,6 +78,9 @@ jobs:
               if: steps.cache-human-genome.outputs.cache-hit != 'true'
               run: |
                   aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index/ ${{ env.cache-hg-path }}
+                  #gzip -9v ${{ env.cache-hg-path }}/genome.fa
+                  # index files are here and so just remove the genome fasta when ready
+                  rm -v ${{ env.cache-hg-path }}/genome.fa
             - name: view environment
               run: |
                 tree $GITHUB_WORKSPACE
@@ -92,7 +95,7 @@ jobs:
               uses: actions/cache@v4
               with:
                 path: |
-                  ${{ github.workspace }}/out/${{ matrix.SRR }}/${{ matrix.SRR }}_SPAdes
+                  ${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes
                   ${{ github.workspace }}/${{ matrix.SRR }}_R1_dedup*.fastq.gz
                 key: ${{ runner.os }}-alignment-${{ matrix.SRR }}-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ hashFiles('analysis_scripts/Alignment.sh') }}-${{ env.cache-build-number }}
             - name: test-alignment
