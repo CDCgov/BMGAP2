@@ -104,7 +104,7 @@ jobs:
                 mkdir -v $GITHUB_WORKSPACE/out
                 pixi run bash $ANALYSIS_SCRIPTS/Alignment.sh test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
                 # Remove the fastq files to save space. It was 500M in my hands.
-                find $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/${{ matrix.SRR }}_SPAdes -name "*.fastq.gz" -delete
+                find $GITHUB_WORKSPACE/out/${{ matrix.SRR }}_SPAdes -name "*.fastq.gz" -delete
             
             - name: test-cleanup
               env:
