@@ -11,7 +11,8 @@ NAME=${4}      #Sample name (M#)
 
 ###################################################
 # Remove human DNA
-bowtie2 -p 20 --local -t -x analysis_scripts/hg38/genome --un-conc-gz $OUT_DIR/${NAME}_R%_dedup_NoHuman.fastq.gz -1 $R1 -2 $R2
+bowtie2 -p 20 --local -t -x analysis_scripts/hg38/genome --un-conc-gz $OUT_DIR/${NAME}_R%_dedup_NoHuman.fastq.gz -1 $R1 -2 $R2 | \
+  samtools view -bhS - - > $OUT_DIR/${NAME}.human.bam
 
 ###################################################
 # adapter, and quality trimming, filter for Phred quality 20
