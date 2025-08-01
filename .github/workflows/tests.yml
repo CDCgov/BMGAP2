@@ -81,8 +81,22 @@ jobs:
                 tree ${{ env.cache-hg-path}}
             - name: tests
               run: |
-                mkdir $GITHUB_WORKSPACE/out
+                mkdir -v $GITHUB_WORKSPACE/out
                 echo START Alignment.sh  
                 pixi run bash ${{ github.workspace }}/analysis_scripts/Alignment.sh test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
-
-                
+                echo START cleanupSingle.sh
+                pixi run bash ${{ github.workspace }}/analysis_scripts/cleanupSingle.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                echo START BMSCAN
+                pixi run bash ${{ github.workspace }}/analysis_scripts/BMScan.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                echo START PMGA
+                pixi run bash ${{ github.workspace }}/analysis_scripts/PMGA.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                echo START LocusExtractor
+                pixi run bash ${{ github.workspace }}/analysis_scripts/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                echo START AMR
+                pixi run bash ${{ github.workspace }}/analysis_scripts/AMR.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: check final output
+              run: |
+                echo "Checking output"
+                tree $GITHUB_WORKSPACE/out
+                echo
+                ls -lhRA $GITHUB_WORKSPACE/out
