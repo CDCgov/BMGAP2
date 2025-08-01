@@ -6,6 +6,7 @@
 ###################################################
 FASTA_DIR=${1} # Directory of each sample
 NAME=${2}      # Sample name (M#)
+NSLOTS=${NSLOTS:1} # Number of slots, default to 1 if not set
 
 # Characterization file with location of fasta and results
 INPUT="$FASTA_DIR/characterization"
@@ -27,7 +28,7 @@ if [[ "$species_name" == "Haemophilus influenzae" || "$species_name" == "Neisser
     echo "Species is $species_name, continue with testing" 
 
     # PMGA run on cleaned fasta file 
-    python3 analysis_scripts/PMGA/blast_pubmlst.py -sc -a -o $INPUT/PMGA -sg -p -d $INPUT -t 16 -fa
+    python3 analysis_scripts/PMGA/blast_pubmlst.py -sc -a -o $INPUT/PMGA -sg -p -d $INPUT -t $NSLOTS -fa
 
 else
     echo "Species is not H.influenzae or N.meningitidis, species is \"$species_name\", done." 

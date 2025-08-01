@@ -80,6 +80,8 @@ jobs:
                 echo "======="
                 tree ${{ env.cache-hg-path}}
             - name: tests
+              env:
+                NSLOTS: 2
               run: |
                 mkdir -v $GITHUB_WORKSPACE/out
                 echo START Alignment.sh  

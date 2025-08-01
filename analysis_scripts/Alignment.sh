@@ -1,6 +1,8 @@
 #! /bin/bash
 #$ -cwd
 
+NSLOTS=${NSLOTS:-1}  # Number of slots available for parallel processing
+
 ###################################################
 # Definining variables
 R1=${1}        #R1 fastq
@@ -11,7 +13,7 @@ NAME=${4}      #Sample name (M#)
 
 ###################################################
 # Remove human DNA
-bowtie2 -p 20 --local -t -x analysis_scripts/hg38/genome --un-conc-gz $OUT_DIR/${NAME}_R%_dedup_NoHuman.fastq.gz -1 $R1 -2 $R2 > \
+bowtie2 -p $NSLOTS --local -t -x analysis_scripts/hg38/genome --un-conc-gz $OUT_DIR/${NAME}_R%_dedup_NoHuman.fastq.gz -1 $R1 -2 $R2 > \
   $OUT_DIR/${NAME}.human.sam
 samtools view -bhS $OUT_DIR/${NAME}.human.sam > $OUT_DIR/${NAME}.human.bam
 rm -v $OUT_DIR/${NAME}.human.sam
@@ -22,7 +24,7 @@ cutadapt -o $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz -p $OUT_DI
 
 ###################################################
 # assemble the cleaned PE fastq reads
-spades.py -t 8 -m 32 --pe1-1 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz --pe1-2 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -o $OUT_DIR/${NAME}_SPAdes
+spades.py -t $NSLOTS -m 32 --pe1-1 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz --pe1-2 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -o $OUT_DIR/${NAME}_SPAdes
 
 echo "Completed alignment of $NAME!"
 ###################################################
