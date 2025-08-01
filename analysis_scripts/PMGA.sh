@@ -6,7 +6,7 @@
 ###################################################
 FASTA_DIR=${1} # Directory of each sample
 NAME=${2}      # Sample name (M#)
-NSLOTS=${NSLOTS:1} # Number of slots, default to 1 if not set
+NSLOTS=${NSLOTS:-1} # Number of slots, default to 1 if not set
 
 # Characterization file with location of fasta and results
 INPUT="$FASTA_DIR/characterization"
