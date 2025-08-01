@@ -100,3 +100,39 @@ jobs:
                 mkdir -v $GITHUB_WORKSPACE/out
                 pixi run bash $ANALYSIS_SCRIPTS/Alignment.sh test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
             
+            - name: test-cleanup
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/cleanupSingle.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: test-bmscan
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/BMScan.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: test-pmga
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/PMGA.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: test-locusextractor
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: test-amr
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/AMR.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: check final output
+              run: |
+                echo "Checking output"
+                tree $GITHUB_WORKSPACE/out
+                echo
+                ls -lhRA $GITHUB_WORKSPACE/out
