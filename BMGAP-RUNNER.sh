@@ -72,7 +72,8 @@ for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
 	fi
 done > $CTRL_FILE
 
-qsub -N bmgap -o $ANALYSIS_DIRECTORY/log -j y -V -cwd -t 1-$(cat $CTRL_FILE | wc -l) \
+# Use -tc 2 to limit the number of concurrent jobs to 2 especially for pubmlst interactions
+qsub -N bmgap -o $ANALYSIS_DIRECTORY/log -j y -V -cwd -tc 2 -t 1-$(cat $CTRL_FILE | wc -l) \
   -v "ANALYSIS_SCRIPTS=$ANALYSIS_SCRIPTS" -v "ANALYSIS_DIRECTORY=$ANALYSIS_DIRECTORY" -v "CTRL_FILE=$CTRL_FILE" <<- "END_OF_SCRIPT"
 
 	r1_file=$(sed -n ${SGE_TASK_ID}p $CTRL_FILE | awk '{print $1}')
