@@ -18,4 +18,3 @@ dependencies:
   - bbmap
   - executor
   - bowtie2
-  - seqtk
