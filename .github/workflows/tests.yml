@@ -81,6 +81,7 @@ jobs:
                 tree ${{ env.cache-hg-path}}
             - name: tests
               run: |
+                mkdir $GITHUB_WORKSPACE/out
                 echo START Alignment.sh  
                 pixi run bash ${{ github.workspace }}/analysis_scripts/Alignment.sh test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
 
