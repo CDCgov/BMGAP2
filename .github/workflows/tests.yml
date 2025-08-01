@@ -51,7 +51,7 @@ jobs:
               id: cache-SRR
               uses: actions/cache@v4
               with:
-                path: test.in/${{ matrix.SRR }}
+                path: ${{ github.workspace }}/test.in/${{ matrix.SRR }}
                 key: ${{ runner.os }}-SRR-${{ matrix.SRR }}-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ env.cache-build-number }}
             - name: download test data
               if: steps.cache-SRR.outputs.cache-hit != 'true'
@@ -99,6 +99,8 @@ jobs:
               run: |
                 mkdir -v $GITHUB_WORKSPACE/out
                 pixi run bash $ANALYSIS_SCRIPTS/Alignment.sh test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                # Remove the fastq files to save space. It was 500M in my hands.
+                find $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/${{ matrix.SRR }}_SPAdes -name "*.fastq.gz" -delete
             
             - name: test-cleanup
               env:
