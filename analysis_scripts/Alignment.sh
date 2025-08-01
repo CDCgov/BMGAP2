@@ -22,16 +22,6 @@ rm -v $OUT_DIR/${NAME}.human.sam
 # adapter, and quality trimming, filter for Phred quality 20
 cutadapt -o $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz -p $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -n 5 --trim-n -m 50 -q 15 -a Prefix=AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -A Universal_rc=AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT $OUT_DIR/${NAME}_R1_dedup_NoHuman.fastq.gz $OUT_DIR/${NAME}_R2_dedup_NoHuman.fastq.gz
 
-# downsample the reads to 100x
-nm_size=230000
-frag_length=500
-coverage=120
-num_reads=$(( $nm_size*$coverage/$frag_length ))
-seqtk sample -s11 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz $num_reads | \
-  gzip -c >       $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim_downsampled.fastq.gz
-seqtk sample -s11 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz $num_reads | \
-  gzip -c >       $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim_downsampled.fastq.gz
-
 ###################################################
 # assemble the cleaned PE fastq reads
 # spades.py -t $NSLOTS -m 32 --pe1-1 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz --pe1-2 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -o $OUT_DIR/${NAME}_SPAdes
