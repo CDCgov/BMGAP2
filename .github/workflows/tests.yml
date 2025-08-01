@@ -35,8 +35,9 @@ jobs:
               uses: actions/cache@v4
               with:
                 path: |
-                  $GITHUB_WORKSPACE/.pixi
-                  ${{ env.cache-pixi-path }}
+                  #$GITHUB_WORKSPACE/.pixi
+                  ${{ github.workspace }}/pixi.toml
+                  ${{ github.workspace }}/.pixi
                 key: ${{ runner.os }}-pixi-${{ hashFiles('BMGAP_Conda_all.yml') }}-${{ env.cache-build-number }}
             
             - name: Set up pixi env
@@ -76,8 +77,6 @@ jobs:
             - name: view environment
               run: |
                 tree $GITHUB_WORKSPACE
-                echo "======="
-                tree ${{ env.cache-pixi-path }}
                 echo "======="
                 tree ${{ env.cache-hg-path}}
             - name: tests
