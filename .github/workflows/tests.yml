@@ -153,7 +153,7 @@ jobs:
               uses: actions/cache@v4
               with:
                 path: |
-                  ${{ github.workspace }}/out/PMGA
+                  ${{ github.workspace }}/out/characterization/PMGA
                 key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/contigs.fasta') }}-${{ env.cache-build-number }}
               
             - name: test-pmga
