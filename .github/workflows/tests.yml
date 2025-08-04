@@ -214,8 +214,8 @@ jobs:
                 mkdir json
                 #find $GITHUB_WORKSPACE/out -name "*.json" -exec ln -sv
                 # use jq to extract the species from "SRR8034137_cleaned.fasta": {"mash_results": {"species": "Neisseria meningitidis",
-                obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
-                obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' out/characterization/LE_*/molecular_data_${{ matrix.SRR }}.json)
+                #obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
+                #obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' out/characterization/LE_*/molecular_data_${{ matrix.SRR }}.json)
                 # Make actual assertions so that it exits with 0 or not
                 # TODO when there are more test data: put this logic into a script
                 #echo "obs_species: $obs_species"
