@@ -179,9 +179,11 @@ jobs:
                 NSLOTS: 2
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
-                pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }} 2>&1
                 # Make it easier to cache and retrieve results by lopping off the date
                 echo
+                tree $GITHUB_WORKSPACE
+                find $GITHUB_WORKSPACE -type d -name "LE*"
                 # should only be one folder and so this asterisk should be safe
                 mv -v $GITHUB_WORKSPACE/LE_*_${{ matrix.SRR }}_* \
                   $GITHUB_WORKSPACE/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
