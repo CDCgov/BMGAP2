@@ -182,7 +182,7 @@ jobs:
                 pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
                 # Make it easier to cache and retrieve results by lopping off the date
                 echo
-                cp -rv $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_* $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_000000
+                cp -rv $GITHUB_WORKSPACE/characterization/LE_${{ matrix.SRR }}_* $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_000000
             - name: test-amr
               env:
                 NSLOTS: 2
