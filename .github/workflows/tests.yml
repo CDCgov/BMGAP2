@@ -161,6 +161,7 @@ jobs:
               env:
                 NSLOTS: 2
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              if: steps.cache-pmga.outputs.cache-hit != 'true'
               run: |
                 pixi run bash $ANALYSIS_SCRIPTS/PMGA.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
             - name: test-locusextractor
@@ -175,6 +176,12 @@ jobs:
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
                 pixi run bash $ANALYSIS_SCRIPTS/AMR.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+            - name: test-prepareToShare
+              env:
+                NSLOTS: 2
+                ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
+              run: |
+                pixi run bash $ANALYSIS_SCRIPTS/prepareToShare.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
             - name: check file structure
               run: |
                 echo "Checking output"
