@@ -164,12 +164,25 @@ jobs:
               if: steps.cache-pmga.outputs.cache-hit != 'true'
               run: |
                 pixi run bash $ANALYSIS_SCRIPTS/PMGA.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+
+            - name: cache-locusextractor
+              id: cache-locusextractor
+              uses: actions/cache@v4
+              with:
+                path: |
+                  ${{ github.workspace }}/out/characterization/LE_${{ matrix.SRR }}_000000
+                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
+
             - name: test-locusextractor
+              if: steps.cache-locusextractor.outputs.cache-hit != 'true'
               env:
                 NSLOTS: 2
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
                 pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                # Make it easier to cache and retrieve results by lopping off the date
+                echo
+                cp -rv $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_* $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_000000
             - name: test-amr
               env:
                 NSLOTS: 2
@@ -181,7 +194,7 @@ jobs:
                 NSLOTS: 2
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
-                pixi run bash $ANALYSIS_SCRIPTS/prepareToShare.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                pixi run bash $ANALYSIS_SCRIPTS/PrepareToShare.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
             - name: check file structure
               run: |
                 echo "Checking output"
