@@ -199,6 +199,7 @@ jobs:
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
                 pixi run bash $ANALYSIS_SCRIPTS/PrepareToShare.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                ls -lh $GITHUB_WORKSPACE/out
             - name: check file structure
               run: |
                 echo "Checking output"
@@ -211,7 +212,7 @@ jobs:
                 pixi install
                 # stash json result files into an easy folder
                 mkdir json
-                find $GITHUB_WORKSPACE/out -name "*.json" -exec ln -sv
+                #find $GITHUB_WORKSPACE/out -name "*.json" -exec ln -sv
                 # use jq to extract the species from "SRR8034137_cleaned.fasta": {"mash_results": {"species": "Neisseria meningitidis",
                 obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
                 obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' out/characterization/LE_*/molecular_data_${{ matrix.SRR }}.json)
