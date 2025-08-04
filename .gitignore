@@ -1,0 +1,6 @@
+# pixi environments
+.pixi
+*.egg-info
+
+analysis_scripts/hg38/
+analysis_scripts/locusextractor/settings_antibiotics/lookupTables/Isolate2MLST2Species.txt.gz
