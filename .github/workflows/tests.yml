@@ -170,7 +170,7 @@ jobs:
               uses: actions/cache@v4
               with:
                 path: |
-                  ${{ github.workspace }}/out/characterization/LE_${{ matrix.SRR }}_000000
+                  ${{ github.workspace }}/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
                 key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
 
             - name: test-locusextractor
@@ -182,7 +182,8 @@ jobs:
                 pixi run bash $ANALYSIS_SCRIPTS/LocusExtractor.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
                 # Make it easier to cache and retrieve results by lopping off the date
                 echo
-                cp -rv $GITHUB_WORKSPACE/characterization/LE_${{ matrix.SRR }}_* $GITHUB_WORKSPACE/out/characterization/LE_${{ matrix.SRR }}_000000
+                # should only be one folder and so this asterisk should be safe
+                mv -v $GITHUB_WORKSPACE/characterization/LE_*_${{ matrix.SRR }}_* $GITHUB_WORKSPACE/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
             - name: test-amr
               env:
                 NSLOTS: 2
