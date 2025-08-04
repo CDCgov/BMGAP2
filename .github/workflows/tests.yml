@@ -154,7 +154,7 @@ jobs:
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/PMGA
-                key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/contigs.fasta') }}-${{ env.cache-build-number }}
+                key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}-${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
               
             - name: test-pmga
               env:
@@ -184,9 +184,12 @@ jobs:
               run: |
                 pixi add jq
                 pixi install
+                # stash json result files into an easy folder
+                #mkdir json
+                #find $GITHUB_WORKSPACE/out -name "*.json" -exec ln -sv
                 # use jq to extract the species from "SRR8034137_cleaned.fasta": {"mash_results": {"species": "Neisseria meningitidis",
-                #obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
-                #obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' ./${{ matrix.SRR }}/characterization/LE_*/molecular_data_${{ matrix.SRR }}.json)
+                obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
+                obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' out/characterization/LE_*/molecular_data_${{ matrix.SRR }}.json)
                 # Make actual assertions so that it exits with 0 or not
                 # TODO when there are more test data: put this logic into a script
                 #echo "obs_species: $obs_species"
