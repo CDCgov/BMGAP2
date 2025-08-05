@@ -169,7 +169,7 @@ jobs:
               id: cache-locusextractor
               uses: actions/cache@v4
               env:
-                cache-check-fasta-path: /home/runner/work/BMGAP2/BMGAP2/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta
+                cache-check-fasta-path: out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
