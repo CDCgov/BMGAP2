@@ -154,7 +154,7 @@ jobs:
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/PMGA
-                key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
+                key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}-${{ hashFiles('out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
                 #key: ${{ runner.os }}-PMGA-${{ hashFiles('analysis_scripts/PMGA.sh') }}--${{ env.cache-build-number }}
 
             - name: test-pmga
@@ -171,7 +171,7 @@ jobs:
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
-                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('${{ github.workspace }}/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
+                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
 
             - name: test-locusextractor
               if: steps.cache-locusextractor.outputs.cache-hit != 'true'
