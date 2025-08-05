@@ -171,7 +171,7 @@ jobs:
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
-                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
+                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('/home/runner/work/BMGAP2/BMGAP2/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
 
             - name: test-locusextractor
               if: steps.cache-locusextractor.outputs.cache-hit != 'true'
