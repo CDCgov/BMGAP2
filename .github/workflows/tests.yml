@@ -168,10 +168,12 @@ jobs:
             - name: cache-locusextractor
               id: cache-locusextractor
               uses: actions/cache@v4
+              env:
+                cache-check-fasta-path: /home/runner/work/BMGAP2/BMGAP2/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta
               with:
                 path: |
                   ${{ github.workspace }}/out/characterization/LE_2.0.2_${{ matrix.SRR }}_000000
-                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ hashFiles('/home/runner/work/BMGAP2/BMGAP2/out/${{ matrix.SRR }}_SPAdes/scaffolds.fasta') }}-${{ env.cache-build-number }}
+                key: ${{ runner.os }}-LE-${{ matrix.SRR }}-${{ hashFiles('analysis_scripts/LocusExtractor.sh') }}-${{ env.cache-check-fasta-path }}-${{ env.cache-build-number }}
 
             - name: test-locusextractor
               if: steps.cache-locusextractor.outputs.cache-hit != 'true'
