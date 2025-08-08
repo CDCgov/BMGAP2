@@ -1,6 +1,14 @@
 # pixi environments
 .pixi
+pixi.lock
+pixi.toml
 *.egg-info
 
+.vscode
+
+# dbs
 analysis_scripts/hg38/
+analysis_scripts/PMGA/pubmlst_dbs_all
 analysis_scripts/locusextractor/settings_antibiotics/lookupTables/Isolate2MLST2Species.txt
+__pycache__
+

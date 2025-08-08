@@ -200,8 +200,14 @@ jobs:
                 NSLOTS: 2
                 ANALYSIS_SCRIPTS: ${{ github.workspace }}/analysis_scripts
               run: |
-                pixi run bash $ANALYSIS_SCRIPTS/PrepareToShare.sh $GITHUB_WORKSPACE/out ${{ matrix.SRR }}
+                pixi run bash $ANALYSIS_SCRIPTS/PrepareToShare.sh $GITHUB_WORKSPACE/out share
                 ls -lh $GITHUB_WORKSPACE/out
+                echo
+                # Check sharing tgz file
+                tar ztvf share-share.tgz
+                echo
+                # untar to make sure it works and see where it goes to
+                tar zxvf share-share.tgz
             - name: check file structure
               run: |
                 echo "Checking output"

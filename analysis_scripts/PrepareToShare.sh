@@ -1,6 +1,8 @@
 #!/bin/bash
 #$ -cwd 
 
+set -e
+
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <result_directory> <LAB_id>"
@@ -20,22 +22,22 @@ fi
 #Directory to store results to share
 DEST_DIR="$RESULT_DIR/shareFiles"
 echo "destination dir is $DEST_DIR"
-mkdir  "$DEST_DIR"
+mkdir -pv "$DEST_DIR"
 
 # Loop through each subdirectory in the parent directory and copying assembly fasta file to new folder
-for SUBDIR in "$RESULT_DIR"/*; do
-    # Check if it's a directory
-    if [ -d "$SUBDIR" ]; then
-        base="${SUBDIR##*/}"
-        if [ "$base" == "shareFiles" ]; then
-           echo "skipping $base"
-        else
-            SRC_DIR="$RESULT_DIR/$base/characterization"
-#            echo "destination sub dir $SRC_DIR"
-            cp -r "$SRC_DIR"/*fasta "$DEST_DIR/"
+find "$RESULT_DIR" "$RESULT_DIR/characterization" -maxdepth 1 -type d | \
+  grep -v shareFiles | \
+  xargs -n 1 bash -c '
+    # If there are fasta/json files, then cp them
+    files=$(\ls $0/*fasta $0/*json 2>/dev/null || true)
+    for file in $files; do
+        if [ ! -f "$file" ]; then
+            continue;
         fi
-    fi
-done
+        cp -vf $file "'$DEST_DIR'"
+    done
+  '
+
 # Create the tar archive
 TAR_FILE="$Lab_ID"-"share.tgz"
 echo "zip file name $TAR_FILE"
@@ -48,3 +50,7 @@ else
     echo "Error: Failed to create tar archive."
     exit 1
 fi
+
+# delete the staging directory and just be verbose on the rmdir
+rm -rf "$DEST_DIR/"*
+rmdir -v "$DEST_DIR"
