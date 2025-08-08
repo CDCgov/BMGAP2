@@ -28,8 +28,8 @@ mkdir -pv "$DEST_DIR"
 find "$RESULT_DIR" "$RESULT_DIR/characterization" -maxdepth 1 -type d | \
   grep -v shareFiles | \
   xargs -n 1 bash -c '
-    # If there are fasta/json files, then cp them
-    files=$(\ls $0/*fasta $0/*json 2>/dev/null || true)
+    # If there are json files, then cp them
+    files=$(\ls $0/*json 2>/dev/null || true)
     for file in $files; do
         if [ ! -f "$file" ]; then
             continue;
@@ -37,6 +37,9 @@ find "$RESULT_DIR" "$RESULT_DIR/characterization" -maxdepth 1 -type d | \
         cp -vf $file "'$DEST_DIR'"
     done
   '
+
+cp -v "$RESULT_DIR"/characterization/*_cleaned.fasta "$DEST_DIR/cleaned.fasta"
+cp -v "$RESULT_DIR"/characterization/BMScan/species_analysis_*.csv "$DEST_DIR/species_analysis.csv"
 
 # Create the tar archive
 TAR_FILE="$Lab_ID"-"share.tgz"
