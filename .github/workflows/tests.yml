@@ -227,7 +227,7 @@ jobs:
 
                 obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' ${{ env.molecular_data_json }} | sed 's/"//g')
                 exp_adk="10"
-                echo "$obs_adk == $exp_adk (?)"
+                echo "$obs_adk ==? $exp_adk"
                 [[ "$obs_adk" == "$exp_adk" ]]
                 
                 # Get some observed values from JSON
