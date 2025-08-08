@@ -207,7 +207,7 @@ jobs:
                 tar ztvf share-share.tgz
                 echo
                 # untar to make sure it works and see where it goes to
-                tar zxvf share-share.tgz
+                tar zxvf share-share.tgz -C $GITHUB_WORKSPACE
             - name: check file structure
               run: |
                 echo "Checking output"
