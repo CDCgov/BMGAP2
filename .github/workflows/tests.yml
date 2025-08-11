@@ -212,6 +212,8 @@ jobs:
               run: |
                 echo "Checking output"
                 tree $GITHUB_WORKSPACE/out
+                echo ls -lhRA $GITHUB_WORKSPACE/out/shareFiles
+                ls -lhRA $GITHUB_WORKSPACE/out/shareFiles
                 echo
                 ls -lhRA $GITHUB_WORKSPACE/out
             - name: check results
