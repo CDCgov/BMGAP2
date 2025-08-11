@@ -214,15 +214,14 @@ jobs:
                 tree $GITHUB_WORKSPACE/out
                 echo ls -lhRA $GITHUB_WORKSPACE/out/shareFiles
                 ls -lhRA $GITHUB_WORKSPACE/out/shareFiles
-                echo
-                ls -lhRA $GITHUB_WORKSPACE/out
+                #echo
+                #ls -lhRA $GITHUB_WORKSPACE/out
             - name: check results
               env:
-                molecular_data_json: ${{ github.workspace }}/out/shareFiles/molecular_data_${{ matrix.SRR }}.json
-                scheme_counts.json: ${{ github.workspace }}/out/shareFiles/scheme_counts.json
-                # note for species_analysis_json: this is a glob pattern, so it will match all files that start with species_analysis_ and end with .json
-                species_analysis_json: ${{ github.workspace }}/out/shareFiles/species_analysis_*.json
-                amr_data.json: ${{ github.workspace }}/out/shareFiles/${{ matrix.SRR }}_amr_data.json
+                molecular_data_json: ${{ github.workspace }}/out/shareFiles/le_molecular_data.json
+                scheme_counts.json: ${{ github.workspace }}/out/shareFiles/pmga_scheme_counts.json
+                species_analysis_json: ${{ github.workspace }}/out/shareFiles/bmscan_species_analysis.json
+                amr_data.json: ${{ github.workspace }}/out/shareFiles/amr_data.json
               run: |
                 pixi add jq
                 pixi install
