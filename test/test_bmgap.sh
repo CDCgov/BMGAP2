@@ -55,3 +55,9 @@ export testDir="$thisDir/$SRR.exp"
   done
   
 }
+
+@test "AMR" {
+  obs=$(jq --sort-keys .antimicrobics $amr_data_json)
+  exp=$(jq --sort-keys .antimicrobics ${testDir}/amr_data.json)
+  [[ "$obs" == "$exp" ]]
+}
