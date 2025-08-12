@@ -59,7 +59,7 @@ echo ""
 for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
         #Check if file exists
 	if [[ ! -f $r1_file ]]; then
-		echo "No R1 files found." >&2
+		echo "R1 file not found: $r1_file" >&2
 		exit 1
 	fi
 	
