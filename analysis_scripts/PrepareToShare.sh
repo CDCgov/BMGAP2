@@ -51,7 +51,7 @@ cp -vf "$RESULT_DIR"/characterization/PMGA/serogroup/serogroup_results.json "$DE
 cp -vf "$PMGA_serogroup_tab" "$DEST_DIR/pmga_serogroup_predictions.tab"
 
 # Make sure the permissions are sane
-find $RESULT_DIR -type f -exec chmod 644 {} \;
+find "$DEST_DIR" -type f -exec chmod 644 {} \;
 
 # Create the tar archive
 TAR_FILE="$Lab_ID"-"share.tgz"
