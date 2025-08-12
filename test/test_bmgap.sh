@@ -26,5 +26,7 @@ export testDir="$thisDir/$SRR.exp"
 @test "species_analysis" {
   obs=$(jq --sort-keys . $species_analysis_json)
   exp=$(jq --sort-keys . ${testDir}/species_analysis.json)
+  echo "# obs: $obs" >&3
+  echo "# exp: $exp" >&3
   [[ "$obs" == "$exp" ]]
 }

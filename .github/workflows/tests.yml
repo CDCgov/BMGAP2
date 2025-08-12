@@ -228,4 +228,4 @@ jobs:
                 pixi add jq bats-core
                 pixi install
 
-                pixi run bats --trace --verbose-run $GITHUB_WORKSPACE/test/test_bmgap.sh
+                pixi run bats --trace --verbose-run test/test_bmgap.sh
