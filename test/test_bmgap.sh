@@ -67,6 +67,7 @@ export testDir="$thisDir/$SRR.exp"
 
 @test "serogroup predictions gene-by-gene" {
   genesIdx=$(head -n 1 $serogroup_tab)
+  [ -n "$genesIdx" ]
 }
 
 @test "serogroup predictions exactly the same" {
