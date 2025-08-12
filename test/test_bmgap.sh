@@ -21,6 +21,9 @@ export testDir="$thisDir/$SRR.exp"
 
   run command -v jq
   [ "$status" -eq 0 ]
+
+  run command -v csvtk
+  [ "$status" -eq 0 ]
 }
 
 # test that species is Neisseria meningitidis from the json
@@ -54,11 +57,64 @@ export testDir="$thisDir/$SRR.exp"
     echo -e "exp: $exp" | sed 's/^/# /' >&3
     [[ "$obs" == "$exp" ]]
   done
-  
 }
 
 @test "AMR" {
   obs=$(jq --sort-keys .antimicrobics $amr_data_json)
   exp=$(jq --sort-keys .antimicrobics ${testDir}/amr_data.json)
   [[ "$obs" == "$exp" ]]
+}
+
+@test "serogroup predictions gene-by-gene" {
+  genesIdx=$(head -n 1 $serogroup_tab)
+}
+
+@test "serogroup predictions exactly the same" {
+  header=$(head -n1 $serogroup_tab | tr '\t' ',')
+  # use csvtk to reorder the columns
+  csvtk -t cut -f "$header" $serogroup_tab > $BATS_TEST_TMPDIR/obs.tab
+  csvtk -t cut -f "$header" ${testDir}/serogroup_predictions.tab > $BATS_TEST_TMPDIR/exp.tab
+
+  # compare the Genes_Present column's values.
+  genesIdx=$(head -n 1 $serogroup_tab | tr '\t' '\n' | grep -n '^Genes_Present$' | cut -d: -f1)
+  obs_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/obs.tab | tail -n +2 | tr ',' '\n' | sort)
+  exp_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/exp.tab | tail -n +2 | tr ',' '\n' | sort)
+  #echo -e "obs_genes:\n$obs_genes" >&3
+  #echo -e "exp_genes:\n$exp_genes" >&3
+  # go gene by gene to see which are different and err on the first one that's different
+  # print any diffs to >&3
+  run bash -c '
+    paste <(echo "$obs_genes") <(echo "$exp_genes") | awk -F"\t" "
+      NR==1 { next }
+      {
+        if (\$1 != \$2) {
+          # print to >&3
+          printf \"# Gene %s differs: %s vs %s\n\", NR, \$1, \$2 > "/dev/stderr"
+          diff_found=1
+        }
+      }
+      END { exit diff_found }
+    "
+  '
+  [ "$status" -eq 0 ]
+
+  run bash -c '
+    paste exp.tab obs.tab | awk -F"\t" "
+      NR==1 {
+        n = NF/2
+        for (i=1; i<=n; i++) colname[i]=\$i
+        next
+      }
+      {
+        for (i=1; i<=n; i++) {
+          if (\$i != \$(i+n)) {
+            printf \"Row %d, Column %s differs: %s vs %s\n\", NR, colname[i], \$i, \$(i+n)
+            diff_found=1
+          }
+        }
+      }
+      END { exit diff_found }
+    "
+  '
+  [ "$status" -eq 0 ]
 }

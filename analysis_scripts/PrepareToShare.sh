@@ -36,6 +36,8 @@ species_analysis_csv=$(find "$RESULT_DIR" -type f -name "species_analysis_*.csv"
 
 # find latest locus extractor directory. Timestamp is in the LE directory
 LE_dir=$(\ls -d "$RESULT_DIR"/characterization/LE_* | sort | tail -n 1)
+# find latest serogroup_predictions_ .tab file in the PMGA serogroup directory
+PMGA_serogroup_tab=$(find "$RESULT_DIR"/characterization/PMGA/serogroup -type f -name "serogroup_predictions_*.tab" | sort | tail -n 1)
 
 cp -vf "$RESULT_DIR"/characterization/*_cleaned.fasta "$DEST_DIR/assembly_cleaned.fasta"
 cp -vf "$species_analysis_json" "$DEST_DIR/bmscan_species_analysis.json"
@@ -46,6 +48,7 @@ cp -vf "$LE_dir"/Results_text/molecular_data_*.csv "$DEST_DIR/le_molecular_data.
 cp -vf "$RESULT_DIR"/characterization/PMGA/scheme_counts.json "$DEST_DIR/pmga_scheme_counts.json"
 cp -vf "$RESULT_DIR"/characterization/PMGA/json/*_cleaned_final_results.json "$DEST_DIR/pmga_cleaned_final_results.json"
 cp -vf "$RESULT_DIR"/characterization/PMGA/serogroup/serogroup_results.json "$DEST_DIR/pmga_serogroup_results.json"
+cp -vf "$PMGA_serogroup_tab" "$DEST_DIR/pmga_serogroup_predictions.tab"
 
 # Make sure the permissions are sane
 find $RESULT_DIR -type f -exec chmod 644 {} \;

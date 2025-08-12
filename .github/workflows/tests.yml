@@ -223,9 +223,10 @@ jobs:
                 scheme_counts_json: ${{ github.workspace }}/out/shareFiles/pmga_scheme_counts.json
                 species_analysis_json: ${{ github.workspace }}/out/shareFiles/bmscan_species_analysis.json
                 amr_data_json: ${{ github.workspace }}/out/shareFiles/amr_data.json
+                serogroup_tab: ${{ github.workspace }}/out/shareFiles/pmga_serogroup_predictions.tab
                 SRR: ${{ matrix.SRR }}
               run: |
-                pixi add jq bats-core
+                pixi add jq bats-core csvtk
                 pixi install
 
                 pixi run bats --trace --verbose-run test/test_bmgap.sh
