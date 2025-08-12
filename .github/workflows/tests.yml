@@ -222,17 +222,22 @@ jobs:
                 scheme_counts.json: ${{ github.workspace }}/out/shareFiles/pmga_scheme_counts.json
                 species_analysis_json: ${{ github.workspace }}/out/shareFiles/bmscan_species_analysis.json
                 amr_data.json: ${{ github.workspace }}/out/shareFiles/amr_data.json
+                SRR: ${{ matrix.SRR }}
               run: |
                 pixi add jq
                 pixi install
 
-                obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' ${{ env.molecular_data_json }} | sed 's/"//g')
+                obs_adk=$(pixi run jq '.Nm_MLST_adk."0"' ${molecular_data_json} | sed 's/"//g')
                 exp_adk="10"
-                echo "$obs_adk ==? $exp_adk"
+                echo "✅ $obs_adk == $exp_adk"
                 [[ "$obs_adk" == "$exp_adk" ]]
                 
                 # Get some observed values from JSON
-                #obs_species=$(pixi run jq '.["SRR8034137_cleaned.fasta"].mash_results.species' $GITHUB_WORKSPACE/out/${{ matrix.SRR }}/characterization/BMScan/species_analysis*.json)
+                obs_species=$(pixi run jq '.["'${SRR}'_cleaned.fasta"].mash_results.species' $species_analysis_json | sed 's/"//g')
+                exp_species="Neisseria meningitidis"
+                echo "✅ $obs_species == $exp_species"
+                [[ "$obs_species" == "$exp_species" ]]
+                
                 # Make actual assertions so that it exits with 0 or not
                 # TODO when there are more test data: put this logic into a script
                 #echo "obs_species: $obs_species"
