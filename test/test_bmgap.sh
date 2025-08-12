@@ -85,7 +85,7 @@ export testDir="$thisDir/$SRR.exp"
   # go gene by gene to see which are different and err on the first one that's different
   # print any diffs to >&3
   run bash -c '
-    paste <(echo "$obs_genes") <(echo "$exp_genes") | awk -F"\t" "
+    paste <(echo "'$obs_genes'") <(echo "'$exp_genes'") | awk -F"\t" "
       NR==1 { next }
       {
         if (\$1 != \$2) {
