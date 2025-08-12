@@ -118,14 +118,5 @@ qsub -N bmgap -o $ANALYSIS_DIRECTORY/log -j y -V -cwd -tc 2 -t 1-$(cat $CTRL_FIL
 	echo "AMR for $base_name." | tee --append "$output_file" "$error_file"
 	bash $ANALYSIS_SCRIPTS/AMR.sh "$OUTPUT_DIR" "$base_name" \
 		>> "$output_file" 2>> "$error_file"
-
-    # Compress that obscenely large qsub stdout file.
-    # It contains SAM contents and in my test is > 1.7G
-    # It can be done in the background and we can have
-    # a wait statement at the end of the program to ensure
-    # that it gets completed.
-    gzip -v "$error_file" "$output_file" \
-		>> "$output_file" 2>> "$error_file"
-
 	
 END_OF_SCRIPT
