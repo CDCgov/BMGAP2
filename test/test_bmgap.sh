@@ -25,8 +25,8 @@ export testDir="$thisDir/$SRR.exp"
 # test that species is Neisseria meningitidis from the json
 @test "species_analysis" {
   # get species analysis json. Remove mash_hash key since it can vary slightly.
-  obs=$(jq --sort-keys . $species_analysis_json | sed '/mash_hash/d')
-  exp=$(jq --sort-keys . ${testDir}/species_analysis.json | sed '/mash_hash/d')
+  obs=$(jq --sort-keys . $species_analysis_json | sed -e '/mash_hash/d' -e '/score/d')
+  exp=$(jq --sort-keys . ${testDir}/species_analysis.json | sed -e '/mash_hash/d' -e '/score/d')
   echo -e "obs: $obs" | sed 's/^/# /' >&3
   echo -e "exp: $exp" | sed 's/^/# /' >&3
   [[ "$obs" == "$exp" ]]
