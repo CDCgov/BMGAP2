@@ -100,7 +100,7 @@ export testDir="$thisDir/$SRR.exp"
   [ "$status" -eq 0 ]
 
   run bash -c '
-    paste exp.tab obs.tab | awk -F"\t" "
+    paste '$BATS_TEST_TMPDIR/'exp.tab '$BATS_TEST_TMPDIR/'obs.tab | awk -F"\t" "
       NR==1 {
         n = NF/2
         for (i=1; i<=n; i++) colname[i]=\$i
