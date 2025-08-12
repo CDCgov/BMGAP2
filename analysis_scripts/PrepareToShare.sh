@@ -65,7 +65,3 @@ else
     echo "Error: Failed to create tar archive."
     exit 1
 fi
-
-# delete the staging directory and just be verbose on the rmdir
-#rm -rf "$DEST_DIR/"*
-#rmdir -v "$DEST_DIR"
