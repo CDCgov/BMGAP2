@@ -1,4 +1,4 @@
-# BMGAP-Pipeline-2.0
+# BMGAP-Pipeline-2
 
 This repository holds the code to run the pipeline for Bacterial Meningitis Genomic Analysis Platform (BMGAP) on the command line.  
 
