@@ -4,12 +4,6 @@
 
 # Check expected environment variables
 set -u
-echo "SRR: $SRR"
-echo "indir: $indir"
-echo "species_analysis_json: $species_analysis_json"
-echo "molecular_data_json: $molecular_data_json"
-echo "scheme_counts_json: $scheme_counts_json"
-echo "amr_data_json: $amr_data_json"
 
 # this directory is the directory that this script is in
 export thisDir=$(dirname "${BATS_TEST_FILENAME}")
@@ -17,7 +11,14 @@ export thisDir=$(dirname "${BATS_TEST_FILENAME}")
 export testDir="$thisDir/$SRR.exp"
 
 # test that jq is installed
-@test "jq is installed" {
+@test "jq is installed and env variables are found" {
+  echo "# SRR: $SRR" >&3
+  echo "# indir: $indir" >&3
+  echo "# species_analysis_json: $species_analysis_json" >&3
+  echo "# molecular_data_json: $molecular_data_json" >&3
+  echo "# scheme_counts_json: $scheme_counts_json" >&3
+  echo "# amr_data_json: $amr_data_json" >&3
+
   run command -v jq
   [ "$status" -eq 0 ]
 }
