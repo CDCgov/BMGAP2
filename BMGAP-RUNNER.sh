@@ -83,7 +83,7 @@ qsub -N bmgap -o $ANALYSIS_DIRECTORY/log -j y -V -cwd -tc 2 -t 1-$(cat $CTRL_FIL
 	base_name=$(basename "$r1_file" .fastq.gz)
 	base_name=${base_name%%_*} #Gets only M#
 	OUTPUT_DIR="$ANALYSIS_DIRECTORY/$base_name"
-	mkdir -p $OUTPUT_DIR
+	mkdir -p "$OUTPUT_DIR"
 	
 	# Define error and output file paths for isolate
 	error_file="$OUTPUT_DIR/${base_name}_error.e"
