@@ -89,8 +89,8 @@ export testDir="$thisDir/$SRR.exp"
 
   # compare the Genes_Present column's values.
   genesIdx=$(head -n 1 $serogroup_tab | tr '\t' '\n' | grep -n '^Genes_Present$' | cut -d: -f1)
-  obs_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/obs.tab | tail -n +2 | tr ',' '\n' | sort)
-  exp_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/exp.tab | tail -n +2 | tr ',' '\n' | sort)
+  obs_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/obs.tab | tail -n +2 | tr ',' '\n' | sort -u)
+  exp_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/exp.tab | tail -n +2 | tr ',' '\n' | sort -u)
   # show the difference
   diff --side-by-side <(echo "$obs_genes") <(echo "$exp_genes") | sed 's/^/# /' >&3
   # now run the actual test
