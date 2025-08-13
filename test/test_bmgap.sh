@@ -80,30 +80,21 @@ export testDir="$thisDir/$SRR.exp"
 
   echo -e "obs:\n$(cat $BATS_TEST_TMPDIR/obs.tab)" | sed 's/^/# /' >&3
   echo -e "exp:\n$(cat $BATS_TEST_TMPDIR/exp.tab)" | sed 's/^/# /' >&3
+  echo -e "# " >&3
+  # Show the difference between these two files
+  diff --side-by-side $BATS_TEST_TMPDIR/obs.tab $BATS_TEST_TMPDIR/exp.tab | sed 's/^/# /' >&3
+  # Now run the actual test to see if the two files are different
+  run diff $BATS_TEST_TMPDIR/obs.tab $BATS_TEST_TMPDIR/exp.tab
+  [ "$status" -eq 0 ]
 
   # compare the Genes_Present column's values.
   genesIdx=$(head -n 1 $serogroup_tab | tr '\t' '\n' | grep -n '^Genes_Present$' | cut -d: -f1)
   obs_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/obs.tab | tail -n +2 | tr ',' '\n' | sort)
   exp_genes=$(cut -f$genesIdx $BATS_TEST_TMPDIR/exp.tab | tail -n +2 | tr ',' '\n' | sort)
-  # TODO leave this test for another time
-
-  run bash -c '
-    paste '$BATS_TEST_TMPDIR/'exp.tab '$BATS_TEST_TMPDIR/'obs.tab | awk -F"\t" "
-      NR==1 {
-        n = NF/2
-        for (i=1; i<=n; i++) colname[i]=\$i
-        next
-      }
-      {
-        for (i=1; i<=n; i++) {
-          if (\$i != \$(i+n)) {
-            printf \"Row %d, Column %s differs: %s vs %s\n\", NR, colname[i], \$i, \$(i+n)
-            diff_found=1
-          }
-        }
-      }
-      END { exit diff_found }
-    "
-  '
+  # show the difference
+  diff --side-by-side <(echo "$obs_genes") <(echo "$exp_genes") | sed 's/^/# /' >&3
+  # now run the actual test
+  run diff <(echo "$obs_genes") <(echo "$exp_genes")
   [ "$status" -eq 0 ]
+
 }
