@@ -14,6 +14,8 @@ env:
     cache-build-number: 3
     cache-pixi-path: ${{ github.workspace }}/.pixi
     cache-hg-path: ${{ github.workspace }}/analysis_scripts/hg38
+    # The github runners have 2 CPUs normally and so just set this to 2.
+    NSLOTS: 2
 
 jobs:
     build:
@@ -57,12 +59,14 @@ jobs:
               if: steps.cache-SRR.outputs.cache-hit != 'true'
               run: |
                   mkdir -pv test.in/${{ matrix.SRR }}
-                  pixi run fasterq-dump ${{ matrix.SRR }} --threads 1 --outdir test.in/${{ matrix.SRR }} --split-files --skip-technical
+                  pixi run fasterq-dump ${{ matrix.SRR }} --threads $NSLOTS --outdir test.in/${{ matrix.SRR }} --split-files --skip-technical
                   # downsample to 120x coverage
-                  pixi run seqtk sample -s11 test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq 55200 | \
-                    gzip -c > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz
-                  pixi run seqtk sample -s11 test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq 55200 | \
-                    gzip -c > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz
+                  #pixi run seqtk sample -s11 test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq 55200 | \
+                  #  gzip -c > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz
+                  #pixi run seqtk sample -s11 test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq 55200 | \
+                  #  gzip -c > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz
+                  gzip -cv < test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R1.fastq.gz
+                  gzip -cv < test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq > test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_R2.fastq.gz
                   rm -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_1.fastq
                   rm -v test.in/${{ matrix.SRR }}/${{ matrix.SRR }}_2.fastq
           
