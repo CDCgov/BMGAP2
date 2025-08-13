@@ -78,8 +78,8 @@ export testDir="$thisDir/$SRR.exp"
   csvtk -t cut -f "$header" $serogroup_tab > $BATS_TEST_TMPDIR/obs.tab
   csvtk -t cut -f "$header" ${testDir}/serogroup_predictions.tab > $BATS_TEST_TMPDIR/exp.tab
 
-  echo -e "obs:\n$(cat $BATS_TEST_TMPDIR/obs.tab)" | sed 's/^/# ' >&3
-  echo -e "exp:\n$(cat $BATS_TEST_TMPDIR/exp.tab)" | sed 's/^/# ' >&3
+  echo -e "obs:\n$(cat $BATS_TEST_TMPDIR/obs.tab)" | sed 's/^/# /' >&3
+  echo -e "exp:\n$(cat $BATS_TEST_TMPDIR/exp.tab)" | sed 's/^/# /' >&3
 
   # compare the Genes_Present column's values.
   genesIdx=$(head -n 1 $serogroup_tab | tr '\t' '\n' | grep -n '^Genes_Present$' | cut -d: -f1)
