@@ -71,7 +71,7 @@ export testDir="$thisDir/$SRR.exp"
 }
 
 @test "serogroup predictions exactly the same" {
-  #skip "I just need to skip this test for now to build the cache on github"
+  skip "I just need to skip this test for now to build the cache on github"
 
   header=$(head -n1 $serogroup_tab | tr '\t' ',')
   # use csvtk to reorder the columns
