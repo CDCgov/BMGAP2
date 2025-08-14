@@ -3,6 +3,7 @@
 # assume that conda environment or other environment is already activated
 
 # Check expected environment variables
+# -u creates an error code if a variable is not set
 set -u
 
 # this directory is the directory that this script is in
