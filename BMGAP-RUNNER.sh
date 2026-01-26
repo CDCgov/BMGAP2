@@ -13,6 +13,11 @@ usage() {
     echo
 }
 
+# Script versioning (BMGAP Version, found in GitHub)
+SCRIPT_VERSION="2"
+SCRIPT_SUBVERSION="2.0"
+export BMGAP_VERSION="$SCRIPT_VERSION.$SCRIPT_SUBVERSION"
+
 # Check if no arguments or insufficient arguments are provided
 if [[ $# -lt 2 ]]; then
     usage
@@ -40,13 +45,23 @@ if ! ls "$FASTQ_DIR"/*.fastq.gz &>/dev/null; then
     exit 1
 fi
 
-echo "Current path: $PATH2"
-echo "FASTQ directory: $FASTQ_DIR"
-echo "Analysis directory: $ANALYSIS_DIRECTORY"
-echo "Analysis scripts directory: $ANALYSIS_SCRIPTS"
-
 mkdir -p $ANALYSIS_DIRECTORY
 ###########################################
+
+# Prepare run report
+RUN_REPORT="$ANALYSIS_DIRECTORY/run_report.txt"
+START_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+{
+echo "Current path: $PATH2"
+echo "Run report generated: $START_TIME"
+echo "BMGAP Version: $SCRIPT_VERSION.$SCRIPT_SUBVERSION"
+echo "FASTQ input directory: $FASTQ_DIR"
+echo "Analysis output directory: $ANALYSIS_DIRECTORY"
+echo "Analysis scripts directory: $ANALYSIS_SCRIPTS"
+echo
+} > "$RUN_REPORT"
+
 
 echo "Beginning analysis of isolates"
 echo ""
@@ -55,6 +70,7 @@ for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
         #Check if file exists
 	if [[ ! -f $r1_file ]]; then
 		echo "No R1 files found."
+		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
 		exit 1
 	fi
 	
@@ -94,8 +110,20 @@ for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
 		# Run AMR with species code for each sample
 		amr_id=$(qsub -V -hold_jid "$pmga_id" -e "$error_file" -o "$output_file" $ANALYSIS_SCRIPTS/AMR.sh "$OUTPUT_DIR" "$base_name" | awk '{print $3}')
 		echo "Submitted AMR, waiting for PMGA job $pmga_id to complete before running."	
+		echo "Sample $base_name submitted.  Results will be in: $OUTPUT_DIR." >> "$RUN_REPORT"
 		sleep 200
 	else
 		echo "Warning: corresponding R2 file not found for $r1_file"
+		echo "Warning: R2 missing for $r1_file" >> "$RUN_REPORT"
 	fi
 done 
+
+END_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+{
+echo
+echo "Run start time: $START_TIME"
+echo "Run end time: $END_TIME"
+echo "Full results directory: $ANALYSIS_DIRECTORY"
+echo "Note: Individual sample output directories are under the analysis directory."
+} >> "$RUN_REPORT"

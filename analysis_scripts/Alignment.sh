@@ -19,7 +19,7 @@ cutadapt -o $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz -p $OUT_DI
 
 ###################################################
 # assemble the cleaned PE fastq reads
-spades.py -t 8 -m 32 --pe1-1 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz --pe1-2 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -o $OUT_DIR/${NAME}_SPAdes
+spades.py -t 8 -m 32 --isolate --pe1-1 $OUT_DIR/${NAME}_R1_dedup_NoHuman_cutTruSeq_trim.fastq.gz --pe1-2 $OUT_DIR/${NAME}_R2_dedup_NoHuman_cutTruSeq_trim.fastq.gz -o $OUT_DIR/${NAME}_SPAdes
 
 echo "Completed alignment of $NAME!"
 ###################################################
