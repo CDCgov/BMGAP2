@@ -69,6 +69,8 @@ for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
 	#Check if the corresponding R2 file exists
 	if [[ -f $r2_file ]]; then
 		echo -e "$r1_file\t$r2_file"
+	else
+		echo "Warning: Corresponding R2 file not found for $r1_file. Skipping this pair." >&2
 	fi
 done > $CTRL_FILE
 
