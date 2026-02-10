@@ -1,6 +1,7 @@
-#Written by ujz6 on 02/25/2025
 #! /bin/bash
 #$ -cwd
+
+# Written by ujz6 on 02/25/2025
 
 ###########################################
 # Function to display the usage message
@@ -62,6 +63,11 @@ echo "Analysis scripts directory: $ANALYSIS_SCRIPTS"
 echo
 } > "$RUN_REPORT"
 
+LOG_DIR="$ANALYSIS_DIRECTORY/log"
+mkdir $LOG_DIR
+CTRL_FILE="$ANALYSIS_DIRECTORY/fastq.fofn"
+touch $CTRL_FILE
+###########################################
 
 echo "Beginning analysis of isolates"
 echo ""
@@ -69,7 +75,7 @@ echo ""
 for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
         #Check if file exists
 	if [[ ! -f $r1_file ]]; then
-		echo "No R1 files found."
+		echo "No R1 files found (expected: $r1_file) ."
 		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
 		exit 1
 	fi
