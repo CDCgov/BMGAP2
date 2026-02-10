@@ -205,7 +205,7 @@ def identify_mutations_in_single_JSON(loci_dict,variant_info,locus_references,lo
                         else:
                             seq = Seq("WWWWWWW")
 
-                    alignments = pairwise2.align.globalds(str(seq),str(ref_seq),MatrixInfo.blosum95,-10,-0.1) ##default gap open and extend for culstal. 
+                    alignments = pairwise2.align.globalds(str(seq),str(ref_seq),MatrixInfo.blosum95,-10,-0.1) ##default gap open and extend for clustal.
                     
                 elif is_dna:
                     print("DNA alignment has not been optimized")
