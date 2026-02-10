@@ -140,8 +140,6 @@ qsub -N bmgap -o $ANALYSIS_DIRECTORY/log -j y -V -cwd -tc 2 -t 1-$(cat $CTRL_FIL
 	
 END_OF_SCRIPT
 
-END_TIME=$(date +"%Y-%m-%d %H:%M:%S")
-
 {
 echo
 echo "Full results directory: $ANALYSIS_DIRECTORY"
