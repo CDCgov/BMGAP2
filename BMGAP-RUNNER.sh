@@ -90,10 +90,8 @@ echo ""
 for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
         #Check if file exists
 	if [[ ! -f $r1_file ]]; then
-		echo "No R1 files found (expected: $r1_file) ."
-		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
-		echo "No R1 files found (expected: $r1_file) ."
-		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
+		echo "No R1 files found (expected: $r1_file) ." >> "$RUN_REPORT"
+		echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
 		exit 1
 	fi
 	
