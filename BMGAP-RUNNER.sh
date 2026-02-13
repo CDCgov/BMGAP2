@@ -19,6 +19,11 @@ SCRIPT_VERSION="2"
 SCRIPT_SUBVERSION="2.0"
 export BMGAP_VERSION="$SCRIPT_VERSION.$SCRIPT_SUBVERSION"
 
+# Script versioning (BMGAP Version, found in GitHub)
+SCRIPT_VERSION="2"
+SCRIPT_SUBVERSION="2.0"
+export BMGAP_VERSION="$SCRIPT_VERSION.$SCRIPT_SUBVERSION"
+
 # Check if no arguments or insufficient arguments are provided
 if [[ $# -lt 2 ]]; then
     usage
@@ -54,11 +59,21 @@ RUN_REPORT="$ANALYSIS_DIRECTORY/run_report.txt"
 START_TIME=$(date +"%Y-%m-%d %H:%M:%S")
 
 {
+mkdir -p $ANALYSIS_DIRECTORY
+###########################################
+
+# Prepare run report
+RUN_REPORT="$ANALYSIS_DIRECTORY/run_report.txt"
+START_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+{
 echo "Current path: $PATH2"
 echo "Run report generated: $START_TIME"
 echo "BMGAP Version: $SCRIPT_VERSION.$SCRIPT_SUBVERSION"
-echo "FASTQ input directory: $FASTQ_DIR"
-echo "Analysis output directory: $ANALYSIS_DIRECTORY"
+echo "Run report generated: $START_TIME"
+echo "BMGAP Version: $SCRIPT_VERSION.$SCRIPT_SUBVERSION"
+echo "FASTQ input input directory: $FASTQ_DIR"
+echo "Analysis output output directory: $ANALYSIS_DIRECTORY"
 echo "Analysis scripts directory: $ANALYSIS_SCRIPTS"
 echo
 } > "$RUN_REPORT"
@@ -75,6 +90,8 @@ echo ""
 for r1_file in "$FASTQ_DIR"/*R1*.fastq.gz; do
         #Check if file exists
 	if [[ ! -f $r1_file ]]; then
+		echo "No R1 files found (expected: $r1_file) ."
+		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
 		echo "No R1 files found (expected: $r1_file) ."
 		        echo "No R1 files found in $FASTQ_DIR, please use a different directory" >> "$RUN_REPORT"
 		exit 1
